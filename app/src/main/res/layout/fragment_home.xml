@@ -1,13 +1,56 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.lenovo.inequalitysign.view.HomeFragment">
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+-<ScrollView tools:context="com.example.administrator.budenghao.MainActivity" android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
 
-</FrameLayout>
+
+-<LinearLayout android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent">
+
+
+-<LinearLayout android:orientation="vertical" android:layout_height="240dp" android:layout_width="match_parent">
+
+<LinearLayout android:orientation="horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content"> </LinearLayout>
+
+<ImageView android:layout_height="230dp" android:layout_width="match_parent" android:scaleType="fitXY" android:src="@drawable/lza" android:id="@+id/lz"/>
+
+</LinearLayout>
+
+
+-<LinearLayout android:orientation="horizontal" android:layout_height="140dp" android:layout_width="match_parent" android:background="@color/graya">
+
+<Button android:layout_height="match_parent" android:layout_width="0dp" android:scaleType="fitXY" android:background="@drawable/pdqh" android:layout_weight="1"/>
+
+<Button android:layout_height="match_parent" android:layout_width="0dp" android:background="@drawable/sysqh" android:layout_weight="1"/>
+
+</LinearLayout>
+
+
+-<LinearLayout android:layout_height="match_parent" android:layout_width="match_parent" android:layout_gravity="center" android:gravity="center" android:layout_marginTop="8dp">
+
+<TextView android:layout_height="match_parent" android:layout_width="150dp" android:background="@drawable/cnxh"/>
+
+</LinearLayout>
+
+
+-<LinearLayout android:layout_height="120dp" android:layout_width="match_parent" android:layout_marginTop="5dp">
+
+<Button android:layout_height="match_parent" android:layout_width="match_parent" android:background="@drawable/btn"> </Button>
+
+</LinearLayout>
+
+
+-<LinearLayout android:layout_height="120dp" android:layout_width="match_parent" android:layout_marginTop="0dp">
+
+<Button android:layout_height="match_parent" android:layout_width="match_parent" android:background="@drawable/btn" android:layout_marginTop="-5dp"> </Button>
+
+</LinearLayout>
+
+
+-<LinearLayout android:layout_height="127dp" android:layout_width="match_parent" android:layout_marginTop="0dp">
+
+<Button android:layout_height="match_parent" android:layout_width="match_parent" android:background="@drawable/btn" android:layout_marginTop="-5dp"> </Button>
+
+</LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>
