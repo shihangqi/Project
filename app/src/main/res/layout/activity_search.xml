@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:background="@color/graya"
+    >
+    <Button
+        android:id="@+id/back2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/zz"
+        />
+
+    <SearchView
+        android:paddingLeft="30dp"
+        android:layout_width="280dp"
+        android:layout_marginLeft="25dp"
+        android:layout_height="40dp"
+        android:queryHint="请输入商圈,店铺"
+        android:searchIcon="@drawable/zzkgc"
+        >
+
+    </SearchView>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:text="取消"
+        android:gravity="center"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="3">
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="热门推荐"/>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+            <TextView
+
+                android:layout_marginLeft="15dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:background="@color/graya"
+                android:text="很高兴遇见你"
+                android:textSize="17dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"></LinearLayout>
+</LinearLayout>
