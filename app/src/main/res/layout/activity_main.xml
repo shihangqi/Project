@@ -1,25 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/ll"
+<LinearLayout android:id="@+id/ll"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/a"
-            android:textSize="25dp"
-            android:text="要娱乐，就找不等号"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textStyle="bold"
-            />
+        android:layout_height="50dp"
+        android:background="@drawable/zzka"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spinnerid"
+            android:padding="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="75dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_theme"
+
+
+            ></Spinner>
+        <Button
+            android:id="@+id/btn_search"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="请输入商店，营业厅"
+            android:textSize="20dp"
+            android:textColorHint="@color/font"
+            android:textColor="@color/font"
+            android:background="@drawable/shape_theme"/>
 
 
     </LinearLayout>
@@ -28,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="9">
+        android:layout_weight="10">
 
     </LinearLayout>
 
@@ -41,29 +56,27 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/sy"/>
+            android:background="@drawable/zzksy"/>
         <Button
             android:id="@+id/btn_gc"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/gc"/>
+            android:background="@drawable/zzkgc"/>
         <Button
             android:id="@+id/btn_fj"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/fj"
+            android:background="@drawable/zzkfj"
             />
         <Button
             android:id="@+id/btn_wd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/wd"/>
-	<Button
-android:layout_width="0dp"
-android:layout_height="match_parent"/>
+            android:background="@drawable/zzkwd"/>
+
 
     </LinearLayout>
 
