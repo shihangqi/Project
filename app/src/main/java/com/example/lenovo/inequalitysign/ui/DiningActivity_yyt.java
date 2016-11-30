@@ -7,81 +7,72 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Created by Administrator on 2016/11/29 0029.
+ */
+public class DiningActivity_yyt extends Activity{
 
-
-public class DiningActivity extends Activity {
-
-    private Button btn;
-
+    private Button btn7;
     private Button btn2;
-
-
-    /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle saveInstanceState){
+        super.onCreate(saveInstanceState);
+        setContentView(R.layout.activity_dining_yyt);
 
-        setContentView(R.layout.activity_dining);
+        btn7=(Button)findViewById(R.id.back7) ;
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i3=new Intent(DiningActivity_yyt.this,MainActivity.class);
+                startActivity(i3);
+            }
+        });
 
-
-        btn2=(Button)findViewById(R.id.yyt);
-
-
+        btn2=(Button)findViewById(R.id.ct) ;
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(DiningActivity.this,ListActivity_yyt.class);
+                Intent i=new Intent(DiningActivity_yyt.this,DiningActivity.class);
                 startActivity(i);
 
             }
         });
 
 
-        btn=(Button)findViewById(R.id.back1);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i5=new Intent(DiningActivity.this,MainActivity.class);
-                startActivity(i5);
-            }
-        });
-//´´½¨Adapter
         final CustomAdapter adapter = new CustomAdapter(this,R.layout.dining_item);
-//ÎªÊÓÍ¼¿Ø¼ş°ó¶¨Adapter
+//ä¸ºè§†å›¾æ§ä»¶ç»‘å®šAdapter
         ListView lv = (ListView)findViewById(R.id.Lv);
         lv.setAdapter(adapter);
-        //°ó¶¨ÁĞ±íÏîÊÂ¼ş¼àÌıÆ÷
-        lv.setOnItemClickListener(new OnItemClickListener() {
+        //ç»‘å®šåˆ—è¡¨é¡¹äº‹ä»¶ç›‘å¬å™¨
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position,
                                     long id) {
 
-                Intent intent=new Intent(DiningActivity.this,DiningInformationActivity.class);
+                Intent intent=new Intent(DiningActivity_yyt.this,DiningInformationActivity.class);
                 startActivity(intent);
 
-//µã»÷Ä³Ò»¸öitemÊ±Æô¶¯ĞÂÓ¦ÓÃ
+//ç‚¹å‡»æŸä¸€ä¸ªitemæ—¶å¯åŠ¨æ–°åº”ç”¨
             }
         });
     }
-    /**
-     * ÄÚ²¿Àà£¬×Ô¶¨ÒåÊÊÅäÆ÷
-     */
+
+
     private class CustomAdapter extends BaseAdapter {
         private Context mContext;
-        //ÉÏÏÂÎÄ»·¾³
+        //ä¸Šä¸‹æ–‡ç¯å¢ƒ
         private int mResource;
-        //´ı¼ÓÔØµÄÁĞ±íÏîitem²¼¾Ö×ÊÔ´
-        private String[] mText = {"   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû", "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû", "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","    Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû"};
+        //å¾…åŠ è½½çš„åˆ—è¡¨é¡¹itemå¸ƒå±€èµ„æº
+        private String[] mText = {"   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–", "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–", "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","    å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–"};
         private int[] mImage = {R.drawable.f,R.drawable.f,
                 R.drawable.f,R.drawable.f,R.drawable.f,R.drawable.f,
                 R.drawable.f,R.drawable.f,R.drawable.f
@@ -103,16 +94,16 @@ public class DiningActivity extends Activity {
             return position;
         }
         public View getView(int position, View convertView, ViewGroup parent) {
-//¼ÓÔØÊÓÍ¼Ò³Ãæ
+//åŠ è½½è§†å›¾é¡µé¢
             if (null == convertView) {
                 convertView = getLayoutInflater().inflate(mResource, null);
             }
-//»æÖÆÊÓÍ¼ÖĞµÄÃ¿Ò»Ïî
+//ç»˜åˆ¶è§†å›¾ä¸­çš„æ¯ä¸€é¡¹
             ImageView imgView = (ImageView)convertView.findViewById(R.id.TvName);
             imgView.setImageResource(mImage[position]);
             TextView txtView = (TextView)convertView.findViewById(R.id.TvAuther);
             txtView.setText(mText[position]);
-//·µ»ØÊÓÍ¼¶ÔÏó
+//è¿”å›è§†å›¾å¯¹è±¡
             return convertView;
         }
     }

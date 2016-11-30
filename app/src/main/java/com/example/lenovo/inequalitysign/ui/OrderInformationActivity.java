@@ -1,15 +1,42 @@
-package com.example.lenovo.inequalitysign.ui;
+package com.example.administrator.budenghao;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import com.example.lenovo.inequalitysign.R;
-
-public class OrderInformationActivity extends AppCompatActivity {
-
+/**
+ * Created by Administrator on 2016/11/29 0029.
+ */
+public class OrderInformationActivity extends Activity{
+    private Button btn1;
+    private Button btn;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public  void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
         setContentView(R.layout.order_information);
+
+        btn1=(Button)findViewById(R.id.back4);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i1=new Intent(OrderInformationActivity.this,NameActivity.class);
+                startActivity(i1);
+            }
+        });
+
+        btn=(Button)findViewById(R.id.btn_qxph);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(OrderInformationActivity.this,BreakActivity.class);
+                startActivity(i);
+
+
+            }
+        });
+
+
     }
 }
