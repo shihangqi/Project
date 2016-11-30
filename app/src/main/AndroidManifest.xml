@@ -28,10 +28,11 @@
         <activity android:name=".ui.SceneActivity" />
         <activity android:name=".ui.EditnameActivity"></activity>
 	<activity android:name=".SearchActivity"></activity>
-        <activity android:name=".ListActivity"></activity>
-        <activity android:name=".NameActivity"></activity>
-        <activity android:name=".OrderActivity"></activity>
+        <activity android:name=".DiningActivity"></activity>
+        <activity android:name=".DiningInformationActivity"></activity>
+        <activity android:name=".OrderInformationActivity"></activity>
         <activity android:name=".BreakActivity"></activity>
+        <activity android:name=".DiningActivity_yyt"></activity>
     </application>
 
 </manifest>
