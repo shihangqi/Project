@@ -1,63 +1,144 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lenovo.inequalitysign.view.SquareFragment"
-    android:id="@+id/square_ll">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.lenovo.inequalitysign.view.SquareFragment">
 
     <LinearLayout
+        android:id="@+id/square_content"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
+        <Button
+            android:id="@+id/sq_rank"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#06c1ae"
-            android:textSize="25dp"
-            android:text="广场"
+            android:layout_height="120dp"
+            android:text="排行\nRank"
             android:textColor="#fff"
-            android:gravity="center"
             android:textStyle="bold"
-        />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/contaner"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="9">
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <Button
-            android:id="@+id/btn_sy"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/sy"/>
-        <Button
-            android:id="@+id/btn_gc"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/gc"/>
-        <Button
-            android:id="@+id/btn_fj"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/fj"
-        />
-        <Button
-            android:id="@+id/btn_wd"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/wd"/>
+            android:textSize="25dp"
+            android:background="@drawable/shape"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/sq_comment"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:text="评论\ncomment"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:background="@drawable/dan"
+                android:layout_gravity="left"
+            />
+            <Button
+                android:layout_width="6dp"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+            <Button
+                android:id="@+id/sq_scene"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:text="实景\npicture"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:background="@drawable/tao"
+                android:layout_marginLeft="2dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <LinearLayout
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#dd191d"></LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="    精选餐厅"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/xianshang">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:background="@drawable/tao2">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="6dp"
+                android:layout_height="160dp">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:background="@drawable/zhuo">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <LinearLayout
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:background="#dd191d"></LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="    热门营业厅"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="215dp"
+                android:layout_height="160dp"
+                android:background="@drawable/y1">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="6dp"
+                android:layout_height="160dp">
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="105dp"
+                android:layout_height="160dp"
+                android:background="@drawable/y2">
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/y3">
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
