@@ -1,4 +1,4 @@
-package com.example.administrator.budenghao;
+package com.example.lenovo.inequalitysign.ui;
 
 import android.app.Activity;
 import android.content.Context;
@@ -53,12 +53,12 @@ public class DiningActivity extends Activity {
                 startActivity(i5);
             }
         });
-//´´½¨Adapter
+//åˆ›å»ºAdapter
         final CustomAdapter adapter = new CustomAdapter(this,R.layout.dining_item);
-//ÎªÊÓÍ¼¿Ø¼ş°ó¶¨Adapter
+//ä¸ºè§†å›¾æ§ä»¶ç»‘å®šAdapter
         ListView lv = (ListView)findViewById(R.id.Lv);
         lv.setAdapter(adapter);
-        //°ó¶¨ÁĞ±íÏîÊÂ¼ş¼àÌıÆ÷
+        //ç»‘å®šåˆ—è¡¨é¡¹äº‹ä»¶ç›‘å¬å™¨
         lv.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position,
                                     long id) {
@@ -66,22 +66,22 @@ public class DiningActivity extends Activity {
                 Intent intent=new Intent(DiningActivity.this,DiningInformationActivity.class);
                 startActivity(intent);
 
-//µã»÷Ä³Ò»¸öitemÊ±Æô¶¯ĞÂÓ¦ÓÃ
+//ç‚¹å‡»æŸä¸€ä¸ªitemæ—¶å¯åŠ¨æ–°åº”ç”¨
             }
         });
     }
     /**
-     * ÄÚ²¿Àà£¬×Ô¶¨ÒåÊÊÅäÆ÷
+     * å†…éƒ¨ç±»ï¼Œè‡ªå®šä¹‰é€‚é…å™¨
      */
     private class CustomAdapter extends BaseAdapter {
         private Context mContext;
-        //ÉÏÏÂÎÄ»·¾³
+        //ä¸Šä¸‹æ–‡ç¯å¢ƒ
         private int mResource;
-        //´ı¼ÓÔØµÄÁĞ±íÏîitem²¼¾Ö×ÊÔ´
-        private String[] mText = {"   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû", "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû", "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû",
-                "   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","   Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû","    Èç¹ûÄã»¹ÎŞ·¨¼ò½éµÄ±í´ïÄãµÄÏë·¨£¬ÄÇÖ»ËµÃ÷Äã»¹²»¹»ÁË½âËû"};
+        //å¾…åŠ è½½çš„åˆ—è¡¨é¡¹itemå¸ƒå±€èµ„æº
+        private String[] mText = {"   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–", "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–", "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–",
+                "   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","   å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–","    å¦‚æœä½ è¿˜æ— æ³•ç®€ä»‹çš„è¡¨è¾¾ä½ çš„æƒ³æ³•ï¼Œé‚£åªè¯´æ˜ä½ è¿˜ä¸å¤Ÿäº†è§£ä»–"};
         private int[] mImage = {R.drawable.f,R.drawable.f,
                 R.drawable.f,R.drawable.f,R.drawable.f,R.drawable.f,
                 R.drawable.f,R.drawable.f,R.drawable.f
@@ -103,16 +103,16 @@ public class DiningActivity extends Activity {
             return position;
         }
         public View getView(int position, View convertView, ViewGroup parent) {
-//¼ÓÔØÊÓÍ¼Ò³Ãæ
+//åŠ è½½è§†å›¾é¡µé¢
             if (null == convertView) {
                 convertView = getLayoutInflater().inflate(mResource, null);
             }
-//»æÖÆÊÓÍ¼ÖĞµÄÃ¿Ò»Ïî
+//ç»˜åˆ¶è§†å›¾ä¸­çš„æ¯ä¸€é¡¹
             ImageView imgView = (ImageView)convertView.findViewById(R.id.TvName);
             imgView.setImageResource(mImage[position]);
             TextView txtView = (TextView)convertView.findViewById(R.id.TvAuther);
             txtView.setText(mText[position]);
-//·µ»ØÊÓÍ¼¶ÔÏó
+//è¿”å›è§†å›¾å¯¹è±¡
             return convertView;
         }
     }
