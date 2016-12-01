@@ -1,4 +1,4 @@
-package com.example.lenovo.inequalitysign.ui;
+package com.example.lenovo.inequalitysign.view;
 
 import android.app.Fragment;
 import android.content.Context;
