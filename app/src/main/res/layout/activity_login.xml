@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.lenovo.inequalitysign.ui.LoginActivity"
     android:background="@color/white">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/fanhui2"
-                android:background="#7cba84"
+                android:background="#7cba83"
                 android:id="@+id/loginB1"/>
 
             <TextView
