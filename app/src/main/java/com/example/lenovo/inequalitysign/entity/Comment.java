@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-
 /**
  * Created by lenovo on 2016/11/23.
  */
@@ -31,7 +30,6 @@ public class Comment extends AppCompatActivity{
             }
         });
     }
-
     private void setDefaultPage(){
         android.app.FragmentManager fm=getFragmentManager();
         FragmentTransaction transaction=fm.beginTransaction();
