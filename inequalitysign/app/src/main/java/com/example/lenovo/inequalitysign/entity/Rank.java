@@ -1,0 +1,60 @@
+package com.example.lenovo.inequalitysign.entity;
+
+/**
+ * Created by ff on 2016/12/3.
+ */
+public class Rank {
+    private int id;//rank  排号
+    private String url;//商家logo
+    private String shop_name;
+    private String address;
+    private int wait_num;
+
+    public Rank(int id, String url, String shop_name, String address, int wait_num) {
+        this.id = id;
+        this.url = url;
+        this.shop_name = shop_name;
+        this.address = address;
+        this.wait_num = wait_num;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getShop_name() {
+        return shop_name;
+    }
+
+    public void setShop_name(String shop_name) {
+        this.shop_name = shop_name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getWait_num() {
+        return wait_num;
+    }
+
+    public void setWait_num(int wait_num) {
+        this.wait_num = wait_num;
+    }
+}

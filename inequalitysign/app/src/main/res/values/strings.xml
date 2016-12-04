@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Budenghao</string>
+    <string-array name="spinnerString">
+        <item>Android</item>
+        <item>IOS</item>
+        <item>WP7</item>
+        <item>WinCE</item>
+        <item>Symbian</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

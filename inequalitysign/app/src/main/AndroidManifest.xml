@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.lenovo.inequalitysign">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.BreakActivity">
+        </activity>
+        <activity android:name=".ui.DiningActivity">
+        </activity>
+        <activity android:name=".ui.DiningInformationActivity">
+        </activity>
+        <activity android:name=".ui.DiningRankActivity">
+        </activity>
+        <activity android:name=".ui.EditnameActivity">
+        </activity>
+        <activity android:name=".ui.LoginActivity">
+        </activity>
+        <activity android:name=".ui.MineOrderActivity">
+        </activity>
+        <activity android:name=".ui.MineProfileActivity">
+        </activity>
+        <activity android:name=".ui.OrderInformationActivity">
+        </activity>
+        <activity android:name=".ui.SceneActivity">
+        </activity>
+        <activity android:name=".ui.SearchActivity">
+        </activity>
+        <activity android:name=".ui.CommentConent">
+        </activity>
+        <activity android:name=".ui.RankActivity">
+        </activity>
+        <activity android:name=".ui.AlreadyLogin">
+        </activity>
+        <activity android:name=".ui.Gender">
+        </activity>
+        <activity android:name=".ui.Login_Wb">
+        </activity>
+        <activity android:name=".ui.Login_Wx">
+        </activity>
+    </application>
+
+</manifest>
