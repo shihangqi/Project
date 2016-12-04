@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="com.example.administrator.budenghao.MainActivity">
+    tools:context="com.example.lenovo.inequalitysign.ui.DiningActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginTop="15dp"
             android:background="@color/white"
-            android:text="����" />
+            android:text="²ÍÌü" />
 
         <Button
             android:layout_width="100dp"
@@ -34,7 +34,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="15dp"
             android:background="@color/white"
-            android:text="Ӫҵ��" />
+            android:text="ÓªÒµÌü" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
