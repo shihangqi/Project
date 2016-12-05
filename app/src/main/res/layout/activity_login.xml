@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+ï»¿<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,18 +17,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/fanhui2"
-                android:background="#7cba83"
+                android:background="#7cba84"
                 android:id="@+id/loginB1"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:background="#7cba84"
-                android:text="¿ìËÙµÇÂ¼"
+                android:text="å¿«é€Ÿç™»å½•"
                 android:gravity="center"
                 android:textSize="30dp"/>
 
-        </LinearLayout>//±êÌâ
+        </LinearLayout>//æ ‡é¢˜
 
         <View
             android:layout_width="match_parent"
@@ -49,14 +49,14 @@
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/shurukuang"
                 android:ems="13"
-                android:hint="ÊÖ»úºÅ"
+                android:hint="æ‰‹æœºå·"
                 android:inputType="phone"
                 android:textSize="15dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="»ñÈ¡ÑéÖ¤Âë"
+                android:text="èŽ·å–éªŒè¯ç "
                 android:gravity="center"
                 android:background="@drawable/shape2"
                 android:layout_gravity="right"
@@ -83,7 +83,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ÑéÖ¤Âë"
+                android:text="éªŒè¯ç "
                 android:textColor="@color/black"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"/>
@@ -109,7 +109,7 @@
         <Button
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:text="µÇ    Â¼"
+            android:text="ç™»    å½•"
             android:gravity="center"
             android:background="@drawable/shape"
             android:layout_marginBottom="150dp"
@@ -137,7 +137,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="µÚÈý·½ÕËºÅµÇÂ¼"
+                android:text="ç¬¬ä¸‰æ–¹è´¦å·ç™»å½•"
                 android:textColor="@color/black"
                 android:layout_centerVertical="true"
                 android:gravity="center"
@@ -177,7 +177,7 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="45dp"
-                    android:text="Î¢²©µÇÂ¼"
+                    android:text="å¾®åšç™»å½•"
                     android:gravity="center"
                     android:layout_marginBottom="50dp"
                     android:layout_gravity="center"
@@ -201,7 +201,7 @@
                 <TextView
                     android:layout_width="150dp"
                     android:layout_height="45dp"
-                    android:text="Î¢ÐÅµÇÂ¼"
+                    android:text="å¾®ä¿¡ç™»å½•"
                     android:gravity="center"
                     android:layout_marginBottom="50dp"
                     android:layout_gravity="center"

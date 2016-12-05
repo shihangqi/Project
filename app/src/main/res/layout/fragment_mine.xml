@@ -2,12 +2,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.lenovo.inequalitysign.view.MineFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="#7cba84"
+                android:text="我的"
+                android:gravity="center"
+                android:textSize="30dp"/>
+
+        </LinearLayout>//标题
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/touxiang"
+            android:layout_gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout2"
+            android:id="@+id/imageButton"
+            android:src="@drawable/circle"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:text="登    录"
+            android:gravity="center"
+            android:id="@+id/mypageB1"
+            android:background="@drawable/shape1"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/mypageB2">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="排号记录"
+                android:paddingTop="8dp"
+                android:paddingLeft="20dp"
+                android:textSize="15dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/youjiantou"
+                android:layout_marginRight="2dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@color/dangrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/mypageB3">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="个人资料"
+                android:paddingTop="8dp"
+                android:paddingLeft="20dp"
+                android:textSize="15dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/youjiantou"
+                android:layout_marginRight="2dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/lightgray" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/bottom_button_layout"
+            android:layout_gravity="right|top" />
+    </FrameLayout>
+
 
 </FrameLayout>

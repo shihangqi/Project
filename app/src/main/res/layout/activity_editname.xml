@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+ï»¿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,19 +28,19 @@
                 android:layout_width="280dp"
                 android:layout_height="65dp"
                 android:background="#7cba84"
-                android:text="ÐÞ¸ÄêÇ³Æ"
+                android:text="ä¿®æ”¹æ˜µç§°"
                 android:gravity="center"
                 android:textSize="30dp"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:text="È·¶¨"
+                android:text="ç¡®å®š"
                 android:background="@null"
                 android:textSize="15dp"
                 android:textColor="@color/black"
                 android:id="@+id/editnameB2"/>
 
-        </LinearLayout>//±êÌâ
+        </LinearLayout>//æ ‡é¢˜
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,13 +53,13 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/shurukuang"
                 android:ems="13"
-                android:hint="ÇëÊäÈëêÇ³Æ"
+                android:hint="è¯·è¾“å…¥æ˜µç§°"
                 android:textSize="15dp"
                 android:textColorHint="@color/lightgray"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="4-20¸ö×Ö·û£¬¿ÉÓÉÖÐÓ¢ÎÄ¡¢Êý×Ö×é³É"
+                android:text="4-20ä¸ªå­—ç¬¦ï¼Œå¯ç”±ä¸­è‹±æ–‡ã€æ•°å­—ç»„æˆ"
                 android:textColor="@color/gray"
                 android:layout_marginLeft="2dp"/>
 

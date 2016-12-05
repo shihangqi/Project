@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+ï»¿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -21,7 +21,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="90dp"
-            android:text="ÉÌ¼ÒÃû³Æ"
+            android:text="å•†å®¶åç§°"
             android:textSize="30dp"
             android:textColor="@color/white"/>
     </LinearLayout>
@@ -40,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="²Í×ÀÀàÐÍ"
+            android:text="é¤æ¡Œç±»åž‹"
             android:textSize="22dp"
             android:layout_gravity="center"
             android:textAlignment="center"/>
@@ -48,13 +48,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="µÈ´ý×ÀÊý"
+            android:text="ç­‰å¾…æ¡Œæ•°"
             android:textAlignment="center"
             android:textSize="22dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Ô¤¼ÆµÈ´ý"
+            android:text="é¢„è®¡ç­‰å¾…"
             android:textSize="22dp"
             android:textAlignment="center"
             android:layout_weight="1"/>
@@ -69,13 +69,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="25dp"
-            android:text="       Ð¡×À"/>
+            android:text="       å°æ¡Œ"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="25dp"
-            android:text="      7×À"/>
+            android:text="      7æ¡Œ"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -93,13 +93,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="25dp"
-            android:text="       ´ó×À"/>
+            android:text="       å¤§æ¡Œ"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="25dp"
-            android:text="      6×À"/>
+            android:text="      6æ¡Œ"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -119,7 +119,7 @@
             android:layout_marginLeft="100dp"
             android:textSize="20dp"
             android:background="@drawable/zzkshape"
-            android:text="Á¢¼´È¡ºÅ"/>
+            android:text="ç«‹å³å–å·"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -131,6 +131,6 @@
             android:gravity="center"
             android:layout_marginLeft="50dp"
             android:textSize="20dp"
-            android:text="ºÓ±±Ê¦·¶´óÑ§ÄÏ¶þ»·¶«Â·¸¨Â·"/>
+            android:text="æ²³åŒ—å¸ˆèŒƒå¤§å­¦å—äºŒçŽ¯ä¸œè·¯è¾…è·¯"/>
     </LinearLayout>
 </LinearLayout>
