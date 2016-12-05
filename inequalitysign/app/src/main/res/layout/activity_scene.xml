@@ -132,51 +132,7 @@
                     。。。。。"/>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_5"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="13dp"
 
-                        android:gravity="center"
-                        android:textColor="#000"
-                        android:text="(在这里店）"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_6"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:text="\n人多热闹。。"/>
-                </LinearLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

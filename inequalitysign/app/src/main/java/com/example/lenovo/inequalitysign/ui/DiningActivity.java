@@ -1,23 +1,40 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
+import com.example.lenovo.inequalitysign.entity.Dining;
+import com.example.lenovo.inequalitysign.http.Https;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiningActivity extends AppCompatActivity {
+public class DiningActivity extends Activity {
+    private  String u = "http://10.7.88.35:8090/shop/home";
     private Button btn;
     private Button btn1;
     private Button btn2;
+    DiningAdapter adapter;
     private ListView lv;
-    private List<String> ls= new ArrayList<String>();//存放餐厅列表数据
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            adapter = new DiningAdapter(DiningActivity.this,ls);
+            lv.setAdapter(adapter);
+        }
+    };
+    public List<Dining> ls= new ArrayList<Dining>();//存放餐厅列表数据
     private List<String> list = new ArrayList<>();//存放营业厅列表数据
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
@@ -31,6 +48,7 @@ public class DiningActivity extends AppCompatActivity {
                 case R.id.ct:
                     //展示餐厅列表数据
                     displayDining();
+                    lv.setAdapter(adapter);
                     break;
                 case R.id.yyt:
                     //展示营业厅列表数据
@@ -48,6 +66,7 @@ public class DiningActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dining);
         findView();
         setOnClick();
+
     }
 
     /**
@@ -62,6 +81,19 @@ public class DiningActivity extends AppCompatActivity {
      * 展示餐厅列表
      */
     private void displayDining() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("晨晨","123");
+                Https http = new Https();
+                ls =http.setAndGet(u);
+                Message msg = new Message();
+                mHandler.sendMessage(msg);
+
+            }
+        }).start();
+
+
 
     }
 
