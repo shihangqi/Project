@@ -19,14 +19,13 @@
         />
 
     <SearchView
-        android:paddingLeft="30dp"
-        android:layout_width="280dp"
+
+        android:layout_width="265dp"
         android:layout_marginLeft="25dp"
         android:layout_height="40dp"
         android:queryHint="请输入商圈,店铺"
-        android:searchIcon="@drawable/zzkgc"
+        android:background="@color/gray"
         >
-
     </SearchView>
     <TextView
         android:id="@+id/tv"
