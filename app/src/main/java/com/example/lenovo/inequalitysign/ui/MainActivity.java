@@ -28,30 +28,13 @@ public class MainActivity extends AppCompatActivity{
         getViews();
         spinner = (Spinner) findViewById(R.id.spinnerid);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.languages,
-                android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.simple_spinner_item);
+        String level[] = getResources().getStringArray(R.array.languages);//资源文件
+        for (int i = 0; i < level.length; i++) {
+            adapter.add(level[i]);
+        }
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-// TODO Auto-generated method stub
-                String selected = arg0.getItemAtPosition(arg2).toString();
-                System.out.println(selected);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-// TODO Auto-generated method stub
-
-
-            }
-
-        });
-
 
 
 
