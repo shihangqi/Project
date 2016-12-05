@@ -17,6 +17,6 @@
         android:bottom="10dp"
         android:left="25dp"
         android:right="10dp"
-        android:top="10dp" />
+        android:top="10dp" />//注释
 
 </shape>

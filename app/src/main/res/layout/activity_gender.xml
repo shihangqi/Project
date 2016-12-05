@@ -81,7 +81,7 @@
                 android:gravity="left"
                 android:id="@+id/genderB6"/>
 
-        </LinearLayout>
+        </LinearLayout>//注释
     </LinearLayout>
 
 </RelativeLayout>

@@ -86,7 +86,7 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/youjiantou"
                 android:layout_marginRight="2dp"/>
-        </LinearLayout>
+        </LinearLayout>//注释
 
         <View
             android:layout_width="match_parent"

@@ -14,7 +14,7 @@
         android:right="10dp"
         android:top="10dp" />
     <!-- 圆角 -->
-    <corners android:radius="6dp" />
+    <corners android:radius="6dp" />//注释
 
 
 </shape>

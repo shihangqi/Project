@@ -126,7 +126,7 @@
             android:layout_marginTop="40dp"
             android:id="@+id/alreadyloginB3"/>
 
-    </LinearLayout>
+    </LinearLayout>//注释
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -102,7 +102,7 @@
                 android:layout_marginTop="15dp"
                 android:id="@+id/wechatB2"/>
 
-        </LinearLayout>
+        </LinearLayout>//注释
 
 
 

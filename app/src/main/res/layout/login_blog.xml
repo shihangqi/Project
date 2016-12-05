@@ -87,7 +87,7 @@
                     android:text="获得你的公开信息（昵称、头像等）"
                     android:paddingTop="8dp"
                     android:textSize="17dp"/>
-            </LinearLayout>
+            </LinearLayout>//注释
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
