@@ -22,8 +22,7 @@ public class OrderInformationActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.btn_qxph:
-                    Intent i=new Intent(OrderInformationActivity.this,BreakActivity.class);
-                    startActivity(i);
+                    finish();
                     break;
             }
         }
@@ -39,6 +38,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_information);
         finView();
         setOnClick();
+
     }
 
     private void setOnClick() {

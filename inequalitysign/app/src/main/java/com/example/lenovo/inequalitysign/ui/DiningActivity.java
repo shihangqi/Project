@@ -8,13 +8,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Https;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,14 +29,26 @@ public class DiningActivity extends Activity {
     private Button btn;
     private Button btn1;
     private Button btn2;
-    DiningAdapter adapter;
+    private DiningAdapter adapter;
     private ListView lv;
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
             adapter = new DiningAdapter(DiningActivity.this,ls);
             lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //设置点击事件
+                    Intent intent = new Intent();
+                    intent.setClass(DiningActivity.this, DiningInformationActivity.class);
+                    intent.putExtra("Name",ls.get(i).getName());
+                    intent.putExtra("Url",ls.get(i).getUrl());
+                    startActivityForResult(intent,i);
+                }
+            });
         }
     };
     public List<Dining> ls= new ArrayList<Dining>();//存放餐厅列表数据
@@ -66,7 +83,12 @@ public class DiningActivity extends Activity {
         setContentView(R.layout.activity_dining);
         findView();
         setOnClick();
+        setDefault();
 
+    }
+
+    private void setDefault() {
+        displayDining();
     }
 
     /**
@@ -84,9 +106,10 @@ public class DiningActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.e("晨晨","123");
+
                 Https http = new Https();
-                ls =http.setAndGet(u);
+                NameValuePair pair = new BasicNameValuePair("city", Utils.city);
+                ls =http.setAndGet(u,pair);
                 Message msg = new Message();
                 mHandler.sendMessage(msg);
 

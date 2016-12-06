@@ -5,4 +5,6 @@ package com.example.lenovo.inequalitysign;
  */
 public class Utils {
     public static int flag = 1;
+    public static String city = "3";
+    public static String user = "";
 }
