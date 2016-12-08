@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 
 public class AlreadyLogin extends AppCompatActivity {
 

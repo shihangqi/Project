@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.RankAdapter;
 import com.example.lenovo.inequalitysign.entity.Rank;
 
