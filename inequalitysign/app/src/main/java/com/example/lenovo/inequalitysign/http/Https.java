@@ -42,7 +42,6 @@ public class Https {
     private String string = "";
     public List<Dining> setAndGet(String u,NameValuePair...pairs) {
 
-
         try {
             URI url = new URI(u);
             HttpClient httpclient = new DefaultHttpClient();

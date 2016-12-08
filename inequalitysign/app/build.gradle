@@ -18,12 +18,20 @@ android {
         }
     }
 }
-
+repositories{
+    flatDir{
+        dirs'libs'
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
+    compile name: 'SMSSDK-2.1.2', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.1.2', ext: 'aar'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:support-v4:24.2.0'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile files('libs/MobTools-2016.1012.1447.jar')
+    compile project(':PushSDK')
 }
