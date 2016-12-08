@@ -1,23 +1,11 @@
 package com.example.lenovo.inequalitysign.http;
 
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.entity.Dining;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -36,12 +24,14 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Https {
-
-    public List<Dining> ls = new ArrayList<>();
+/**
+ * Created by ff on 2016/12/8.
+ */
+public class Httpss {
     private String string = "";
-    public List<Dining> setAndGet(String u,NameValuePair...pairs) {
+    List<Dining> ls = new ArrayList<>();
 
+    public String setAndGet(String u, NameValuePair...pairs) {
         try {
             URI url = new URI(u);
             HttpClient httpclient = new DefaultHttpClient();
@@ -62,27 +52,32 @@ public class Https {
                     string += string1;
                 }
             }
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return string;
+    }
+    public List<Dining> parser(String s){
 
+        try {
             JSONArray array = new JSONArray(string);
-
             for(int i =0 ; i < array.length();i++){
                 JSONObject object = array.getJSONObject(i);
                 String urll = object.getString("shop_img_small");
                 String name = object.getString("shop_name");
                 String intro = object.getString("shop_description");
                 ls.add(new Dining(urll,name,intro));
-         }
-
-
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return ls;
     }
+
 }

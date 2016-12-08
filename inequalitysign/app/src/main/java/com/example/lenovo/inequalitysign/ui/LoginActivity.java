@@ -17,12 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
-<<<<<<< HEAD
+
 import com.example.lenovo.inequalitysign.Utils.Utils;
-=======
+
 import com.example.lenovo.inequalitysign.Utils.QQUtil;
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.http.Https;
+import com.example.lenovo.inequalitysign.http.Httpss;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.tauth.IUiListener;
@@ -36,7 +37,7 @@ import org.json.JSONObject;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
->>>>>>> 93d8fd91648185adb49599f0f8f815d352cb698a
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     private UserInfo mInfo;
     private Tencent mTencent;
     private final String APP_ID = "1105749707";
-
+    private  String response_server = "";//QQ登陆后调用程序得到的响应
     private ImageButton btn;
     private EditText et_te1;
     private EditText et_cord;
@@ -58,7 +59,28 @@ public class LoginActivity extends AppCompatActivity {
     private String iPhone;
     private String iCord;
     private int time = 60;
+    private String openid;
     private boolean flag = true;
+    private Handler handler1 = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if(response_server.equals("loginfail")){
+                Log.e("--------------石航琪失败",response_server);
+                Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(LoginActivity.this,LoginActivity.class);
+                startActivity(i);
+            }else{
+                Log.e("-----石航琪成功",response_server);
+                Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                Utils.id = response_server;
+                Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
+                Log.e("Utils.flag",Utils.flag+"");
+                startActivity(i);
+            }
+        }
+    };
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -287,6 +309,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *QQ登陆成功后调用这个类
+     */
     private class BaseUiListener implements IUiListener {
 
         @Override
@@ -294,23 +319,24 @@ public class LoginActivity extends AppCompatActivity {
             String s = response.toString();
             try {
                 JSONObject json = new JSONObject(s);
-                NameValuePair pair = new BasicNameValuePair("user_id", json.getString("openid"));
-                Log.e("++++++++",pair.toString());
-                Https h = new Https();
-                String response_server = h.setAndGetUserID(Utils.USER_URL+"/login",pair);
-                Log.e("========",response_server);
-                if(response_server.equals("loginfail")){
-                    Log.e("--------------石航琪失败",response_server);
-                    Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this,LoginActivity.class);
-                    startActivity(i);
-                }else{
-                    Log.e("-----石航琪成功",response_server);
-                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-                    Utils.id = response_server;
-                    Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
-                    startActivity(i);
-                }
+                openid = json.getString("openid");
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        NameValuePair pair = new BasicNameValuePair("user_id", openid);
+                        Log.e("++++++++",pair.getName().toString());
+                        Log.e("++++++++",pair.getValue().toString());
+                        Log.e("++++++++",pair.toString());
+                        Httpss h = new Httpss();
+                        response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
+                        Log.e("++++++++++=",response_server);
+                        Message msg = new Message();
+                        handler1.sendMessage(msg);
+
+                    }
+                }).start();
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -333,11 +359,7 @@ public class LoginActivity extends AppCompatActivity {
             QQUtil.dismissDialog();
         }
     }
-    /**
-     * 短信验证代码
-     */
 
-    //验证码送成功后提示文字
     private void reminderText() {
         now.setVisibility(View.VISIBLE);
         handlerText.sendEmptyMessageDelayed(1, 1000);
@@ -371,6 +393,9 @@ public class LoginActivity extends AppCompatActivity {
         };
 
     };
+    /**
+     * 短信验证成功后 调用
+     */
 
     Handler handler=new Handler(){
 
@@ -389,20 +414,20 @@ public class LoginActivity extends AppCompatActivity {
                 if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码成功,验证通过
                     Toast.makeText(getApplicationContext(), "验证码校验成功", Toast.LENGTH_SHORT).show();
                     handlerText.sendEmptyMessage(2);
-
-                    Https h = new Https();
-                    NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
-                    String response_server = h.setAndGetUserID(Utils.USER_URL+"/login",pair);
-                    if(response_server.equals("loginfail")){
-                        Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(LoginActivity.this,LoginActivity.class);
-                        startActivity(i);
-                    }else{
-                        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
-                        Utils.id = response_server;
-                        Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
-                        startActivity(i);
-                    }
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Httpss h = new Httpss();
+                            NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
+                            Log.e("++++++++",pair.getName().toString());
+                            Log.e("++++++++",pair.getValue().toString());
+                            Log.e("++++++++",pair.toString());
+                            response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
+                            Log.e("++++",response_server);
+                        }
+                    }).start();
+                    Message msg1 =new Message();
+                    handler1.sendMessage(msg1);
 
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){//服务器验证码发送成功
                     reminderText();
