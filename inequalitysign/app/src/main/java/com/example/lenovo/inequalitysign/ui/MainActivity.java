@@ -1,13 +1,9 @@
 package com.example.lenovo.inequalitysign.ui;
 
-import android.app.Fragment;
-
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -19,8 +15,6 @@ import com.example.lenovo.inequalitysign.view.HomeFragment;
 import com.example.lenovo.inequalitysign.view.MineFragment;
 import com.example.lenovo.inequalitysign.view.NearbyFragment;
 import com.example.lenovo.inequalitysign.view.SquareFragment;
-import com.umeng.message.IUmengRegisterCallback;
-import com.umeng.message.PushAgent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
         findView();
         setOnClick();
         switch(Utils.flag){//实现从Fragment跳转到Fragment
@@ -94,25 +87,6 @@ public class MainActivity extends AppCompatActivity {
             case 4:
                 setMine();
         }
-
-    }
-
-    private void init() {
-        PushAgent mPushAgent = PushAgent.getInstance(this);
-        //注册推送服务，每次调用register方法都会回调该接口
-        mPushAgent.register(new IUmengRegisterCallback() {
-
-            @Override
-            public void onSuccess(String deviceToken) {
-                //注册成功会返回device token
-                Log.d("mytoken:",deviceToken);
-            }
-
-            @Override
-            public void onFailure(String s, String s1) {
-                Log.d("myerror:","123456");
-            }
-        });
 
     }
 

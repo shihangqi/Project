@@ -34,7 +34,6 @@ public class MyApplication extends Application {
                 Log.d("myerror:","123456");
             }
         });
-
     }
 
     private static void initImageLoader(Context context) {

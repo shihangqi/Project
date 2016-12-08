@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.lenovo.inequalitysign.ui.MainActivity">
 
     <LinearLayout
@@ -91,90 +90,11 @@
             android:layout_height="wrap_content"
             android:padding="2dp"
             android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/ll1"
+            <ListView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal"
-                android:background="@color/gray">
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:padding="2dp"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/xtp"
-                    android:scaleType="fitXY"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="18dp"
-                    android:padding="8dp"
-                    android:text="   如果你还无法简介的表达你的想法，那只说明你还不够了解他"/>
+                android:layout_height="match_parent"
+                android:id="@+id/lv"></ListView>
 
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll2"
-                android:layout_width="match_parent"
-                android:layout_marginTop="2dp"
-                android:layout_height="80dp"
-                android:background="@color/gray">
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:padding="2dp"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/xtp"
-                    android:scaleType="fitXY"/>
-                <TextView
-                    android:textSize="18dp"
-                    android:padding="8dp"
-                    android:text="   如果你还无法简介的表达你的想法，那只说明你还不够了解他"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll3"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/gray">
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:padding="2dp"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/xtp"
-                    android:scaleType="fitXY"/>
-                <TextView
-                    android:textSize="18dp"
-                    android:padding="8dp"
-                    android:text="   如果你还无法简介的表达你的想法，那只说明你还不够了解他"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll4"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/gray">
-                <ImageView
-                    android:layout_marginLeft="10dp"
-                    android:padding="2dp"
-                    android:layout_width="80dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/xtp"
-                    android:scaleType="fitXY"/>
-                <TextView
-                    android:textSize="18dp"
-                    android:padding="8dp"
-                    android:text="   如果你还无法简介的表达你的想法，那只说明你还不够了解他"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

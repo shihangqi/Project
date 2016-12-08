@@ -19,12 +19,15 @@ import android.widget.Toast;
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.QQUtil;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.http.Https;
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQAuth;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -137,11 +140,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
 
             public void afterEvent(int event, int result, Object data) {
-        Message msg = new Message();
-        msg.arg1 = event;
-        msg.arg2 = result;
-        msg.obj = data;
-        handler.sendMessage(msg);
+                Message msg = new Message();
+                msg.arg1 = event;
+                msg.arg2 = result;
+                msg.obj = data;
+                handler.sendMessage(msg);
             }
 
         };
@@ -166,8 +169,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = (Button)findViewById(R.id.loginB3);//登陆按钮
         btn_wb = (ImageButton)findViewById(R.id.loginB4);//微博登陆
         btn_wx = (ImageButton)findViewById(R.id.loginB5);//微信登陆
-        
-        
+
+
     }
     @Override
     protected void onResume() {
@@ -284,10 +287,29 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onComplete(Object response) {
-//            QQUtil.showResultDialog(LoginActivity.this, response.toString(),
-//                    "登录成功");
-            Intent i = new Intent(LoginActivity.this,MainActivity.class);
-            startActivity(i);
+            String s = response.toString();
+            try {
+                JSONObject json = new JSONObject(s);
+                NameValuePair pair = new BasicNameValuePair("user_id", json.getString("openid"));
+                Log.e("++++++++",pair.toString());
+                Https h = new Https();
+                String response_server = h.setAndGetUserID(Utils.USER_URL+"/login",pair);
+                Log.e("========",response_server);
+                if(response_server.equals("loginfail")){
+                    Log.e("--------------石航琪失败",response_server);
+                    Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this,LoginActivity.class);
+                    startActivity(i);
+                }else{
+                    Log.e("-----石航琪成功",response_server);
+                    Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                    Utils.id = response_server;
+                    Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
+                    startActivity(i);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             doComplete((JSONObject) response);
         }
 
@@ -364,9 +386,19 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "验证码校验成功", Toast.LENGTH_SHORT).show();
                     handlerText.sendEmptyMessage(2);
 
-                    Intent ii = new Intent();
-                    ii.setClass(LoginActivity.this,AlreadyLogin.class);
-                    startActivity(ii);
+                    Https h = new Https();
+                    NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
+                    String response_server = h.setAndGetUserID(Utils.USER_URL+"/login",pair);
+                    if(response_server.equals("loginfail")){
+                        Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this,LoginActivity.class);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
+                        Utils.id = response_server;
+                        Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
+                        startActivity(i);
+                    }
 
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE){//服务器验证码发送成功
                     reminderText();

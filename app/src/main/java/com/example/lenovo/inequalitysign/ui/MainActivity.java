@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity{
     private Button mBtnSy,mBtnGc,mBtnFj,mBtnWd;
     //private MyDdFragment mDd;
     private HomeFragment mM;
-    private Button edt;
+    private LinearLayout edt;
     private Spinner spinner;
 
     //private MySpFragment mSp;
