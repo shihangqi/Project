@@ -3,6 +3,7 @@ package com.example.lenovo.inequalitysign.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +20,13 @@ public class OrderInformationActivity extends AppCompatActivity {
             switch (view.getId()){
                 case R.id.back4:
                     Intent intent=new Intent(OrderInformationActivity.this,DiningInformationActivity.class);
+                    Intent ii = getIntent();
+                    String name1 = ii.getStringExtra("Name");
+                    String url1 = ii.getStringExtra("Url");
+                    intent.putExtra("Name",name1);
+                    intent.putExtra("Url",url1);
+                    Log.e("cf",name1);
+                    Log.e("cf",url1);
                     startActivity(intent);
                     break;
                 case R.id.btn_qxph:

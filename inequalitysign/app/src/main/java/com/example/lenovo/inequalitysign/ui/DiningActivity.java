@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiningActivity extends Activity {
-    private  String u = "http://10.7.88.35:8090/shop/home";
+    private  String u = "http://10.7.88.34:8090/shop/home";
     private Button btn;
     private Button btn1;
     private Button btn2;

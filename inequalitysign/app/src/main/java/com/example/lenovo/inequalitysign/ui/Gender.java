@@ -1,6 +1,8 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,15 +28,20 @@ public class Gender extends AppCompatActivity {
                     startActivity(i);
                     break;
                 case R.id.genderB2:
+                    SharedPreferences spf = getSharedPreferences("count", Context.MODE_APPEND);
+                    SharedPreferences.Editor editor = spf.edit();
+                    editor.putString("Sex","男");
                     Intent ii = new Intent();
                     ii.setClass(Gender.this,MineProfileActivity.class);
-                    ii.putExtra("gender","男");
+
                     startActivity(ii);
                     break;
                 case R.id.genderB3:
+                    SharedPreferences spf1 = getSharedPreferences("count", Context.MODE_APPEND);
+                    SharedPreferences.Editor editor1 = spf1.edit();
+                    editor1.putString("Sex","女");
                     Intent intent = new Intent();
                     intent.setClass(Gender.this,MineProfileActivity.class);
-                    intent.putExtra("gender","女");
                     startActivity(intent);
                     break;
             }

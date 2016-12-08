@@ -29,8 +29,8 @@ public class DiningInformationActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn;
     private Bitmap bitmap;
-    private static String name;
-    private static String url;
+    private String name;
+    private String url;
     private TextView tv_name;
     private ImageView img;
     private Handler mHandler = new Handler(){
@@ -52,7 +52,12 @@ public class DiningInformationActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_qh:
                     Intent intent = new Intent(DiningInformationActivity.this,OrderInformationActivity.class);
-                    startActivityForResult(intent,1);
+                    Intent ii = getIntent();
+                    String name1 = ii.getStringExtra("Name");
+                    String url1 = ii.getStringExtra("Url");
+                    intent.putExtra("Name",name1);
+                    intent.putExtra("Url",url1);
+                    startActivity(intent);
                     break;
             }
         }
@@ -68,7 +73,6 @@ public class DiningInformationActivity extends AppCompatActivity {
         name = i.getStringExtra("Name");
         url = i.getStringExtra("Url");
         setContent();
-
 
 
 

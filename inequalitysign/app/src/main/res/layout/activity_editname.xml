@@ -16,7 +16,7 @@
             android:id="@+id/linearLayout2"
             android:orientation="horizontal"
             android:background="#7cba84">
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@drawable/fanhui2"
@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
+                android:id="@+id/et_name"
                 android:background="@drawable/shurukuang"
                 android:ems="13"
                 android:hint="请输入昵称"

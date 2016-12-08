@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -39,7 +40,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-    private String u = "http://10.7.88.35:8090/shop/line_dining";
+    private String u = "http://10.7.88.34:8090/shop/line_dining";
     private View view;
     private ImageButton btn1;
     private ImageButton btn2;
@@ -48,9 +49,10 @@ public class HomeFragment extends Fragment {
     private ListView lv;
     private DiningAdapter adapter;
     public List<Dining> ls = new ArrayList<>();
+    private ImageView lz;
     private Handler mHandler = new Handler(){
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(Message msg) {//处理listview
             super.handleMessage(msg);
             adapter = new DiningAdapter(getActivity().getApplicationContext(),ls);
             lv.setAdapter(adapter);
@@ -69,6 +71,7 @@ public class HomeFragment extends Fragment {
 
         }
     };
+
 
     private void setListViewHeightBasedOnChildren(ListView lv) {
         ListAdapter listAdapter = lv.getAdapter();
@@ -202,6 +205,7 @@ public class HomeFragment extends Fragment {
         btn1=(ImageButton)view.findViewById(R.id.btn_pd);
         btn2=(ImageButton)view.findViewById(R.id.btn_sys);
         btn3 = (Button)view.findViewById(R.id.btn_search);
+        lz = (ImageView)view.findViewById(R.id.lz);
         lv = (ListView)view.findViewById(R.id.lv);
         spinner = (Spinner)view.findViewById(R.id.spinnerid);
 
