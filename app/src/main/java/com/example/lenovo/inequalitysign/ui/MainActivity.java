@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity{
 
 
 
-        edt=(Button)findViewById(R.id.btn_search);
+        edt=(LinearLayout)findViewById(R.id.btn_search);
         edt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
