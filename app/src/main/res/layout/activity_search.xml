@@ -25,6 +25,7 @@
         android:layout_height="40dp"
         android:queryHint="请输入商圈,店铺"
         android:background="@color/gray"
+                android:alpha="20"
         >
     </SearchView>
     <TextView
