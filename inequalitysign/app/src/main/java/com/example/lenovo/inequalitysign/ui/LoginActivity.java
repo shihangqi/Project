@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 
 public class LoginActivity extends AppCompatActivity {
 

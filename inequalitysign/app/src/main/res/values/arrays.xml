@@ -7,4 +7,10 @@
         <item>邯郸</item>
         <item>衡水</item>
     </string-array>
+    <integer-array name="myArray">
+        <item>@drawable/lza</item>
+        <item>@drawable/lzb</item>
+        <item>@drawable/lza</item>
+        <item>@drawable/lzb</item>
+    </integer-array>
 </resources>

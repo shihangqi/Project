@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Https;
@@ -26,6 +25,7 @@ import java.util.List;
 
 public class DiningActivity extends Activity {
     private  String u = "http://10.7.88.34:8090/shop/home";
+    private String u1 = "http://10.7.88.34:8090/shop/line_hall";
     private Button btn;
     private Button btn1;
     private Button btn2;
@@ -44,6 +44,7 @@ public class DiningActivity extends Activity {
                     //设置点击事件
                     Intent intent = new Intent();
                     intent.setClass(DiningActivity.this, DiningInformationActivity.class);
+                    intent.putExtra("Context","DiningActivity");
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
                     startActivityForResult(intent,i);
@@ -95,6 +96,18 @@ public class DiningActivity extends Activity {
      * 展示营业厅数据
      */
     private void displayYyt() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                Https http = new Https();
+//                NameValuePair pair = new BasicNameValuePair("city", Utils.city);
+//                ls =http.setAndGet(u1,pair);
+//                Message msg = new Message();
+//                mHandler.sendMessage(msg);
+//
+//            }
+//        }).start();
 
     }
 

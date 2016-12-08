@@ -23,8 +23,10 @@ public class OrderInformationActivity extends AppCompatActivity {
                     Intent ii = getIntent();
                     String name1 = ii.getStringExtra("Name");
                     String url1 = ii.getStringExtra("Url");
+                    String start1 = ii.getStringExtra("Context");
                     intent.putExtra("Name",name1);
                     intent.putExtra("Url",url1);
+                    intent.putExtra("Context",start1);
                     Log.e("cf",name1);
                     Log.e("cf",url1);
                     startActivity(intent);

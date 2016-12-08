@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 
@@ -47,16 +48,25 @@ public class DiningInformationActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.back3:
-                    Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
-                    startActivity(i);
+                    String start = getIntent().getStringExtra("Context");
+                    if(start.equals("HomeFragment") ){
+                        Utils.flag =1;
+                        Intent intent1 = new Intent(DiningInformationActivity.this,MainActivity.class);
+                        startActivity(intent1);
+                    }else{
+                        Intent i=new Intent(DiningInformationActivity.this,DiningActivity.class);
+                        startActivity(i);
+                    }
                     break;
                 case R.id.btn_qh:
                     Intent intent = new Intent(DiningInformationActivity.this,OrderInformationActivity.class);
                     Intent ii = getIntent();
                     String name1 = ii.getStringExtra("Name");
                     String url1 = ii.getStringExtra("Url");
+                    String start1 = ii.getStringExtra("Context");
                     intent.putExtra("Name",name1);
                     intent.putExtra("Url",url1);
+                    intent.putExtra("Context",start1);
                     startActivity(intent);
                     break;
             }

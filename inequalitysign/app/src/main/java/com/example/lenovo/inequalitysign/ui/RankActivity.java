@@ -5,11 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.RankAdapter;
 import com.example.lenovo.inequalitysign.entity.Rank;
 

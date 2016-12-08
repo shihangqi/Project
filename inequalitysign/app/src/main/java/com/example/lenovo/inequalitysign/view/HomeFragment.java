@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,13 +15,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.Utils;
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Https;
@@ -35,6 +33,8 @@ import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,9 +47,30 @@ public class HomeFragment extends Fragment {
     private Button btn3;
     private Spinner spinner;
     private ListView lv;
+    private int currentId = 0;
     private DiningAdapter adapter;
+    private int[] pics = new int[]
+            {
+                    R.drawable.lza,
+                    R.drawable.lzb,
+                    R.drawable.lza,
+                    R.drawable.lzb
+            };
+
     public List<Dining> ls = new ArrayList<>();
     private ImageView lz;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(msg.what == 0x1233){
+                lz.setImageResource(pics[currentId++]);
+                if(currentId>=4){
+                    currentId = 0;
+                }
+            }
+        }
+    };
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {//处理listview
@@ -63,6 +84,7 @@ public class HomeFragment extends Fragment {
                     //设置点击事件
                     Intent intent = new Intent();
                     intent.setClass(getActivity().getApplicationContext(), DiningInformationActivity.class);
+                    intent.putExtra("Context","HomeFragment");
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
                     startActivity(intent);
@@ -129,6 +151,19 @@ public class HomeFragment extends Fragment {
         setOnClick();
         setaddress();
 
+        setImg();
+    }
+
+    private void setImg() {
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Message msg = new Message();
+                msg.what = 0x1233;
+                handler.sendMessage(msg);
+
+            }
+        },0,3000);
     }
 
 
