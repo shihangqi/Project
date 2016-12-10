@@ -31,6 +31,7 @@ public class Gender extends AppCompatActivity {
                     SharedPreferences spf = getSharedPreferences("count", Context.MODE_APPEND);
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("Sex","男");
+                    editor.commit();
                     Intent ii = new Intent();
                     ii.setClass(Gender.this,MineProfileActivity.class);
 

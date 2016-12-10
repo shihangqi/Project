@@ -1,6 +1,9 @@
 package com.example.lenovo.inequalitysign.http;
 
+import com.example.lenovo.inequalitysign.entity.Comment;
 import com.example.lenovo.inequalitysign.entity.Dining;
+import com.example.lenovo.inequalitysign.entity.Order;
+import com.example.lenovo.inequalitysign.entity.Rank;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -30,6 +33,9 @@ import java.util.List;
 public class Httpss {
     private String string = "";
     List<Dining> ls = new ArrayList<>();
+    List<Rank> ls_Rank = new ArrayList<>();
+    List<Order> ls_Order = new ArrayList<>();
+    List<Comment> ls_Comment = new ArrayList<>();
 
     public String setAndGet(String u, NameValuePair...pairs) {
         try {
@@ -66,7 +72,7 @@ public class Httpss {
     public List<Dining> parser(String s){
 
         try {
-            JSONArray array = new JSONArray(string);
+            JSONArray array = new JSONArray(s);
             for(int i =0 ; i < array.length();i++){
                 JSONObject object = array.getJSONObject(i);
                 String urll = object.getString("shop_img_small");
@@ -78,6 +84,55 @@ public class Httpss {
             e.printStackTrace();
         }
         return ls;
+    }
+    public List<Rank> parserRank(String s){
+        try {
+            JSONArray array = new JSONArray(s);
+            for(int i = 0;i < array.length(); i++){
+                JSONObject object = array.getJSONObject(i);
+                String url = object.getString("shop_img_small");
+                String name = object.getString("shop_name");
+                String address = object.getString("shop_address");
+                int count = object.getInt("shop_count");
+                ls_Rank.add(new Rank(url,name,address,count));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return ls_Rank;
+    }
+//    public List<Order> parserOrder(String s){
+//        try {
+//            JSONArray array = new JSONArray(s);
+//            for(int i = 0;i < array.length(); i++){
+//                JSONObject object = array.getJSONObject(i);
+//                String url = object.getString("shop_img_small");
+//                String name = object.getString("shop_name");
+//                String address = object.getString("shop_address");
+//                int count = object.getInt("shop_count");
+//                ls_Order.add(new Order(i,url,name,address,count));
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return ls_Order;
+//    }
+    public List<Comment> parserComment(String s){
+        try {
+            JSONArray array1 = new JSONArray(s);
+            for(int i = 0;i < array1.length(); i++) {
+                JSONObject object = array1.getJSONObject(i);
+                int star = object.getInt("star");
+                String user_name = object.getString("user_name");
+                String time = object.getString("time");
+                String shop_name = object.getString("shop_name");
+                String  content = object.getString("content");
+                ls_Comment.add(new Comment(user_name,time,content,shop_name,star));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return  ls_Comment;
     }
 
 }

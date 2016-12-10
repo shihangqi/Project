@@ -14,6 +14,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="1"
+                android:id="@+id/tv"
                 android:textColor="#fff"
                 android:textSize="22dp"
                 android:gravity="center"
@@ -23,11 +24,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical">
-            <Button
+            <ImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:scaleType="fitXY"
+                android:id="@+id/iv11"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/emei"/>
+                android:src="@drawable/emei"/>
             <LinearLayout
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
@@ -37,35 +40,51 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="峨眉小镇"
+                    android:id="@+id/tv1"
                     android:textColor="#000"
                     android:textSize="20dp"
                     android:textStyle="bold"/>
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_vertical"
-                    android:text="地点:石家庄万达店"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="20dp"
+                        android:gravity="center_vertical"
+                        android:text="地点:"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="3"
+                        android:id="@+id/tv2"
+                        android:layout_height="20dp"
+                        android:gravity="center_vertical"
+                        android:text="石家庄万达店"/>
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:orientation="horizontal"
                     android:gravity="center_vertical">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:text="日排队人数："/>
                     <TextView
-                        android:id="@+id/R_Person1"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tv3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+
                         android:layout_height="wrap_content"
                         android:textColor="#e51c23"
                         android:textStyle="bold"
                         android:text="168人"/>
                 </LinearLayout>
             </LinearLayout>
-            <ImageButton
-                android:layout_width="55dp"
-                android:layout_height="50dp"
-                android:background="@drawable/go"/>
+
         </LinearLayout>
     </LinearLayout>
 

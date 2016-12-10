@@ -108,20 +108,20 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.loginB3:
-                    //验证  验证码是否正确 如果正确跳已经登陆界面
-                    if(!TextUtils.isEmpty(et_cord.getText().toString().trim())){
-                        if(et_cord.getText().toString().trim().length()==4){
-                            iCord = et_cord.getText().toString().trim();
-                            SMSSDK.submitVerificationCode("86", iPhone, iCord);
-                            flag = false;
-                        }else{
-                            Toast.makeText(LoginActivity.this, "请输入完整验证码", Toast.LENGTH_LONG).show();
-                            et_cord.requestFocus();
-                        }
-                    }else{
-                        Toast.makeText(LoginActivity.this, "请输入验证码", Toast.LENGTH_LONG).show();
-                        et_cord.requestFocus();
-                    }
+//                    //验证  验证码是否正确 如果正确跳已经登陆界面
+//                    if(!TextUtils.isEmpty(et_cord.getText().toString().trim())){
+//                        if(et_cord.getText().toString().trim().length()==4){
+//                            iCord = et_cord.getText().toString().trim();
+//                            SMSSDK.submitVerificationCode("86", iPhone, iCord);
+//                            flag = false;
+//                        }else{
+//                            Toast.makeText(LoginActivity.this, "请输入完整验证码", Toast.LENGTH_LONG).show();
+//                            et_cord.requestFocus();
+//                        }
+//                    }else{
+//                        Toast.makeText(LoginActivity.this, "请输入验证码", Toast.LENGTH_LONG).show();
+//                        et_cord.requestFocus();
+//                    }
                     break;
                 case R.id.loginB4:
                     final Context context = LoginActivity.this;

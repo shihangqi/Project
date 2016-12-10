@@ -17,6 +17,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/user_name"
                 android:text="匿名用户"
                 android:textSize="20dp"
                 android:gravity="center_vertical"/>
@@ -34,6 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="15dp"
+                android:id="@+id/time"
                 android:gravity="center"
                 android:layout_marginLeft="40dp"
                 android:text="2016-11-28"/>
@@ -49,21 +51,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:id="@+id/content"
                 android:text="平心而论，服务态度好，环境好，真的很实惠，就是人太多了，等了好久"
                 android:textSize="15dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="20dp">
             <TextView
                 android:layout_width="310dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:id="@+id/shop_name"
                 android:text="胖哥俩肉蟹煲（勒泰店）"/>
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/go"/>
+
         </LinearLayout>
 
 

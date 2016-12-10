@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context=".ui.SceneActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,111 +29,9 @@
             android:layout_height="match_parent"
             android:background="@drawable/menu"/>
     </LinearLayout>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.example.lenovo.budh.scene">
-        <LinearLayout
-            android:id="@+id/sq_s"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_1"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:text="\n好吃看的见，美味不用等。科尔沁体验店（雅清）"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_2"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:text="\n水果体验店\n。。。。。。。。。。。。。。\n美味又实惠"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_3"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:text="\n鱼酷（万达店）。。。。。。。。。。
-                    。。"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="140dp"
-                        android:background="@drawable/sc_4"/>
-                    <TextView
-                        android:layout_margin="5dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="13dp"
-                        android:textColor="#000"
-                        android:text="\n美好时光
-                    啦啦啦。。。。。。
-                    。。。。。"/>
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recylerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

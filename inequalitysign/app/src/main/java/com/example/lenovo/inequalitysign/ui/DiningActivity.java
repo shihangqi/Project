@@ -16,6 +16,7 @@ import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Https;
+import com.example.lenovo.inequalitysign.http.Httpss;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -53,6 +54,7 @@ public class DiningActivity extends Activity {
         }
     };
     public List<Dining> ls= new ArrayList<Dining>();//存放餐厅列表数据
+    private String s = "";
     private List<String> list = new ArrayList<>();//存放营业厅列表数据
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
@@ -120,9 +122,10 @@ public class DiningActivity extends Activity {
             @Override
             public void run() {
 
-                Https http = new Https();
+                Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city", Utils.city);
-                ls =http.setAndGet(u,pair);
+                s =http.setAndGet(u,pair);
+                ls = http.parser(s);
                 Message msg = new Message();
                 mHandler.sendMessage(msg);
 

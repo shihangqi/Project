@@ -1,6 +1,8 @@
 package com.example.lenovo.inequalitysign.ui;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,14 +13,27 @@ import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.RankAdapter;
 import com.example.lenovo.inequalitysign.entity.Rank;
+import com.example.lenovo.inequalitysign.http.Httpss;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RankActivity extends AppCompatActivity {
+    private String u = Utils.SHOP_URL+"list";
     private List<Rank> ls = new ArrayList<>();
     private ImageButton btn;
     private ListView lv;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            RankAdapter adapter = new RankAdapter(RankActivity.this,ls);
+            lv.setAdapter(adapter);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +41,22 @@ public class RankActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rank);
         findView();
         setOnClick();
-        RankAdapter adapter = new RankAdapter(RankActivity.this,ls);
-        lv.setAdapter(adapter);
+       getContent();
+    }
+
+    private void getContent() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Httpss http = new Httpss();
+                NameValuePair pair = new BasicNameValuePair("city",Utils.city);
+                String s  = http.setAndGet(u,pair);
+                ls = http.parserRank(s);
+                Message msg = new Message();
+
+
+            }
+        }).start();
     }
 
     private void setOnClick() {

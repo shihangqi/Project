@@ -28,10 +28,11 @@ public class MineFragment extends Fragment {
             switch (view.getId()){
                 case R.id.mypageB1:
                     //调到登陆界面 ,图片下面的字体改变成推出当前账号
-                    btn.setText("推出当前账号");
+
                     Intent i = new Intent();
                     i.setClass(getActivity().getApplicationContext(), LoginActivity.class);
                     startActivity(i);
+                    btn.setText("推出当前账号");
                     break;
                 case R.id.mypageB2:
                     //如果 没登陆 调到登陆界面，登陆之后可以查看记录

@@ -24,20 +24,15 @@ public class EditnameActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.editnameB1:
-                    SharedPreferences spf1 = getSharedPreferences("count", Context.MODE_APPEND);
-                    String name = spf1.getString("Name","");
-                    if(et_name.getText().toString().length() == 0){
-                        AlertDialog.Builder build = new AlertDialog.Builder(EditnameActivity.this);
-                        build.setTitle("温馨提示");
-                        build.setMessage("请输入昵称");
-                        build.setPositiveButton("确定",null);
-                        build.setNegativeButton("取消",null);
-                    }
+                    Intent ii = new Intent();
+                    ii.setClass(EditnameActivity.this,MineProfileActivity.class);
+                    startActivity(ii);
                     break;
                 case R.id.editnameB2:
                     SharedPreferences spf = getSharedPreferences("count", Context.MODE_APPEND);
                     SharedPreferences.Editor editor = spf.edit();
                     editor.putString("Name",et_name.getText().toString());
+                    editor.commit();
                     Intent i = new Intent();
                     i.setClass(EditnameActivity.this,MineProfileActivity.class);
                     startActivity(i);

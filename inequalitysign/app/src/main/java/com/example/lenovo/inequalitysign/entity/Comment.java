@@ -8,12 +8,22 @@ public class Comment {
     private String date;
     private String comment;
     private String server;
+    private int star;
 
-    public Comment(String user, String date, String comment, String server) {
+    public Comment(String user, String date, String comment, String server,int star) {
         this.user = user;
         this.date = date;
         this.comment = comment;
         this.server = server;
+        this.star = star;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
     }
 
     public String getUser() {

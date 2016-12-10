@@ -24,6 +24,7 @@ import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.http.Https;
+import com.example.lenovo.inequalitysign.http.Httpss;
 import com.example.lenovo.inequalitysign.ui.DiningActivity;
 import com.example.lenovo.inequalitysign.ui.DiningInformationActivity;
 import com.example.lenovo.inequalitysign.ui.SearchActivity;
@@ -40,7 +41,7 @@ import java.util.TimerTask;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-    private String u = "http://10.7.88.34:8090/shop/line_dining";
+    private String u = "http://172.16.20.101:8090/shop/home";
     private View view;
     private ImageButton btn1;
     private ImageButton btn2;
@@ -65,7 +66,7 @@ public class HomeFragment extends Fragment {
             super.handleMessage(msg);
             if(msg.what == 0x1233){
                 lz.setImageResource(pics[currentId++]);
-                if(currentId>=4){
+                if(currentId>=3){
                     currentId = 0;
                 }
             }
@@ -94,6 +95,10 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    /**
+     * 设置ListView的高度
+     * @param lv
+     */
 
     private void setListViewHeightBasedOnChildren(ListView lv) {
         ListAdapter listAdapter = lv.getAdapter();
@@ -192,9 +197,10 @@ public class HomeFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Https http = new Https();
-                        NameValuePair pair = new BasicNameValuePair("city",Utils.city);
-                        ls = http.setAndGet(u,pair);
+                        Httpss http = new Httpss();
+                        NameValuePair pair = new BasicNameValuePair("city","3");
+                        String s = http.setAndGet(u,pair);
+                        ls = http.parser(s);
                         Message msg = new Message();
                         mHandler.sendMessage(msg);
                     }
@@ -209,10 +215,10 @@ public class HomeFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Https http = new Https();
+                        Httpss http = new Httpss();
                         NameValuePair pair = new BasicNameValuePair("city","3");
-                        Log.e("----------1",pair.getValue());
-                        ls = http.setAndGet(u,pair);
+                        String s = http.setAndGet(u,pair);
+                        ls = http.parser(s);
                         Message msg = new Message();
                         mHandler.sendMessage(msg);
                     }

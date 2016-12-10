@@ -4,27 +4,20 @@ package com.example.lenovo.inequalitysign.entity;
  * Created by ff on 2016/12/3.
  */
 public class Rank {
-    private int id;//rank  排号
+
     private String url;//商家logo
     private String shop_name;
     private String address;
     private int wait_num;
 
-    public Rank(int id, String url, String shop_name, String address, int wait_num) {
-        this.id = id;
+    public Rank( String url, String shop_name, String address, int wait_num) {
+
         this.url = url;
         this.shop_name = shop_name;
         this.address = address;
         this.wait_num = wait_num;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getUrl() {
         return url;
