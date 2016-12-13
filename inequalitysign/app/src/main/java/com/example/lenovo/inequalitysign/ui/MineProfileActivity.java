@@ -1,6 +1,8 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
@@ -180,6 +182,15 @@ public class MineProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mine_profile);
         findView();
         setOnClick();
+        setContent();
+    }
+
+    private void setContent() {
+        SharedPreferences spf = getSharedPreferences("count", Context.MODE_APPEND);
+        String name = spf.getString("Name","");
+        String sex = spf.getString("Sex","");
+        tv_name.setText(name);
+        tv_sex.setText(sex);
     }
 
     private void setOnClick() {

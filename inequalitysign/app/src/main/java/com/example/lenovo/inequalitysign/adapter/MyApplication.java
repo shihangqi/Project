@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -19,21 +20,23 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initImageLoader(getApplicationContext());
-//        PushAgent mPushAgent = PushAgent.getInstance(this);
-//        //注册推送服务，每次调用register方法都会回调该接口
-//        mPushAgent.register(new IUmengRegisterCallback() {
+        PushAgent mPushAgent = PushAgent.getInstance(this);
+        //注册推送服务，每次调用register方法都会回调该接口
+        mPushAgent.register(new IUmengRegisterCallback() {
 
-//            @Override
-//            public void onSuccess(String deviceToken) {
-//                //注册成功会返回device token
-//                Log.d("mytoken:",deviceToken);
-//            }
-//
-//            @Override
-//            public void onFailure(String s, String s1) {
-//                Log.d("myerror:","123456");
-//            }
-//        });
+            @Override
+            public void onSuccess(String deviceToken) {
+                //注册成功会返回device token
+                Log.d("mytoken:",deviceToken);
+            }
+
+            @Override
+            public void onFailure(String s, String s1) {
+                Log.d("myerror:","123456");
+            }
+        });
+        String device_token = mPushAgent.getRegistrationId();
+        Utils.push_id = device_token;
     }
 
     private static void initImageLoader(Context context) {

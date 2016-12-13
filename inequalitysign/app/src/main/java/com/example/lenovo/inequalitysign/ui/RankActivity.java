@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -51,9 +52,10 @@ public class RankActivity extends AppCompatActivity {
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                 String s  = http.setAndGet(u,pair);
+                Log.e("S",s);
                 ls = http.parserRank(s);
                 Message msg = new Message();
-
+                handler.sendMessage(msg);
 
             }
         }).start();

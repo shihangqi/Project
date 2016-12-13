@@ -8,9 +8,9 @@ public class Rank {
     private String url;//商家logo
     private String shop_name;
     private String address;
-    private int wait_num;
+    private String wait_num;
 
-    public Rank( String url, String shop_name, String address, int wait_num) {
+    public Rank( String url, String shop_name, String address, String wait_num) {
 
         this.url = url;
         this.shop_name = shop_name;
@@ -43,11 +43,11 @@ public class Rank {
         this.address = address;
     }
 
-    public int getWait_num() {
+    public String getWait_num() {
         return wait_num;
     }
 
-    public void setWait_num(int wait_num) {
+    public void setWait_num(String wait_num) {
         this.wait_num = wait_num;
     }
 }

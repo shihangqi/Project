@@ -66,7 +66,7 @@ public class RankAdapter extends BaseAdapter {
         TextView tv_address = (TextView)view.findViewById(R.id.tv2);
         TextView tv_count = (TextView)view.findViewById(R.id.tv3);
         Rank rank = ls.get(i);
-        tv_num.setText(i+"");
+        tv_num.setText(++i +"");
         tv_shop.setText(rank.getShop_name());
         tv_address.setText(rank.getAddress());
         tv_count.setText(rank.getWait_num());

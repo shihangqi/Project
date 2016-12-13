@@ -4,6 +4,7 @@ import com.example.lenovo.inequalitysign.entity.Comment;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.entity.Order;
 import com.example.lenovo.inequalitysign.entity.Rank;
+import com.example.lenovo.inequalitysign.entity.Scene;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -36,6 +37,14 @@ public class Httpss {
     List<Rank> ls_Rank = new ArrayList<>();
     List<Order> ls_Order = new ArrayList<>();
     List<Comment> ls_Comment = new ArrayList<>();
+    List<Scene> ls_Scene = new ArrayList<>();
+
+    /**
+     * 将得到的json 字符串解析成字符串
+     * @param u
+     * @param pairs
+     * @return
+     */
 
     public String setAndGet(String u, NameValuePair...pairs) {
         try {
@@ -69,22 +78,35 @@ public class Httpss {
         }
         return string;
     }
+
+    /**
+     * 将字符串解析成 餐厅列表
+     * @param s
+     * @return
+     */
     public List<Dining> parser(String s){
 
         try {
             JSONArray array = new JSONArray(s);
             for(int i =0 ; i < array.length();i++){
                 JSONObject object = array.getJSONObject(i);
+                String shop_id = object.getString("shop_id");
                 String urll = object.getString("shop_img_small");
                 String name = object.getString("shop_name");
                 String intro = object.getString("shop_description");
-                ls.add(new Dining(urll,name,intro));
+                ls.add(new Dining(shop_id,urll,name,intro));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return ls;
     }
+
+    /**
+     * 将字符串解析成排行榜列表
+     * @param s
+     * @return
+     */
     public List<Rank> parserRank(String s){
         try {
             JSONArray array = new JSONArray(s);
@@ -93,7 +115,7 @@ public class Httpss {
                 String url = object.getString("shop_img_small");
                 String name = object.getString("shop_name");
                 String address = object.getString("shop_address");
-                int count = object.getInt("shop_count");
+                String  count = object.getString("count(shop.id)");
                 ls_Rank.add(new Rank(url,name,address,count));
             }
         } catch (JSONException e) {
@@ -117,6 +139,12 @@ public class Httpss {
 //        }
 //        return ls_Order;
 //    }
+
+    /**
+     * 将字符串解析成评论串
+     * @param s
+     * @return
+     */
     public List<Comment> parserComment(String s){
         try {
             JSONArray array1 = new JSONArray(s);
@@ -133,6 +161,23 @@ public class Httpss {
             e.printStackTrace();
         }
         return  ls_Comment;
+    }
+    /**
+     * 将字符串解析成实景列表
+     */
+    public List<Scene> parserScene(String s){
+        try {
+            JSONArray array1 = new JSONArray(s);
+            for(int i = 0;i < array1.length(); i++) {
+                JSONObject object = array1.getJSONObject(i);
+                String url = object.getString("img");
+                String content = object.getString("content");
+                ls_Scene.add(new Scene(url,content));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return ls_Scene;
     }
 
 }

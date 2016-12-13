@@ -16,8 +16,12 @@ import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.http.Httpss;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,15 +36,23 @@ public class DiningInformationActivity extends AppCompatActivity {
     private Bitmap bitmap;
     private String name;
     private String url;
+    private String id;
     private TextView tv_name;
     private ImageView img;
+    private String u = Utils.SHOP_URL+"store";
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             tv_name.setText(name);
-
             img.setImageBitmap(bitmap);
+        }
+    };
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
         }
     };
     private View.OnClickListener mListener = new View.OnClickListener() {
@@ -82,10 +94,26 @@ public class DiningInformationActivity extends AppCompatActivity {
         Intent i = getIntent();
         name = i.getStringExtra("Name");
         url = i.getStringExtra("Url");
+        id = i.getStringExtra("Id");
+
         setContent();
 
 
 
+    }
+
+    private void setType() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Httpss http = new Httpss();
+                NameValuePair pair = new BasicNameValuePair("shop_id",id);
+                String s = http.setAndGet(u,pair);
+                Message msg = new Message();
+
+
+            }
+        }).start();
     }
 
     private void setContent() {
@@ -101,6 +129,7 @@ public class DiningInformationActivity extends AppCompatActivity {
     }
     private void http() {
         try {
+
             URL u = new URL(url);
             HttpURLConnection connection = (HttpURLConnection)u.openConnection();
             InputStream in = connection.getInputStream();

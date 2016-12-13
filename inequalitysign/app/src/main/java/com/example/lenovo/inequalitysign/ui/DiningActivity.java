@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,7 +16,6 @@ import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.adapter.DiningAdapter;
 import com.example.lenovo.inequalitysign.entity.Dining;
-import com.example.lenovo.inequalitysign.http.Https;
 import com.example.lenovo.inequalitysign.http.Httpss;
 
 import org.apache.http.NameValuePair;
@@ -25,8 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DiningActivity extends Activity {
-    private  String u = "http://10.7.88.34:8090/shop/home";
-    private String u1 = "http://10.7.88.34:8090/shop/line_hall";
+    private  String u = Utils.SHOP_URL+"line_dining";
+    private String u1 = Utils.SHOP_URL+"line_hall";
+
     private Button btn;
     private Button btn1;
     private Button btn2;
@@ -48,6 +49,30 @@ public class DiningActivity extends Activity {
                     intent.putExtra("Context","DiningActivity");
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
+                    intent.putExtra("Id",ls.get(i).getShop_id());
+                    Log.e("URL",ls.get(i).getUrl());
+                    startActivityForResult(intent,i);
+                }
+            });
+        }
+    };
+    private Handler mHandler1 = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            adapter = new DiningAdapter(DiningActivity.this,ls);
+            lv.setAdapter(adapter);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //设置点击事件
+                    Intent intent = new Intent();
+                    intent.setClass(DiningActivity.this, YytActivity.class);
+                    intent.putExtra("Context","DiningActivity");
+                    intent.putExtra("Name",ls.get(i).getName());
+                    intent.putExtra("Url",ls.get(i).getUrl());
+                    intent.putExtra("Id",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }
             });
@@ -98,18 +123,20 @@ public class DiningActivity extends Activity {
      * 展示营业厅数据
      */
     private void displayYyt() {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                Https http = new Https();
-//                NameValuePair pair = new BasicNameValuePair("city", Utils.city);
-//                ls =http.setAndGet(u1,pair);
-//                Message msg = new Message();
-//                mHandler.sendMessage(msg);
-//
-//            }
-//        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Httpss http = new Httpss();
+                NameValuePair pair = new BasicNameValuePair("city", Utils.city);
+                s = http.setAndGet(u1,pair);
+                Log.e("yyt",s);
+                ls = http.parser(s);
+                Message msg = new Message();
+                mHandler1.sendMessage(msg);
+
+            }
+        }).start();
 
     }
 
@@ -125,7 +152,9 @@ public class DiningActivity extends Activity {
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city", Utils.city);
                 s =http.setAndGet(u,pair);
+                Log.e("ct",s);
                 ls = http.parser(s);
+                Log.e("Dining",ls.toString());
                 Message msg = new Message();
                 mHandler.sendMessage(msg);
 
