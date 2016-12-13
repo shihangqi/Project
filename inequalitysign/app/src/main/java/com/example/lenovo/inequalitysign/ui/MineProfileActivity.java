@@ -4,8 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,11 +25,21 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
+import com.example.lenovo.inequalitysign.Utils.Utils;
+import com.example.lenovo.inequalitysign.http.Httpss;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
 public class MineProfileActivity extends AppCompatActivity {
-
+    private String u =Utils.USER_URL+ "getmessage";
     private ImageButton btn_back;
     private ImageButton btn1;
     private ImageButton btn2;
@@ -34,12 +47,26 @@ public class MineProfileActivity extends AppCompatActivity {
     private Button btn11;
     private Button btn12;
     private Button btn13;
+    private String sex;
+    private String name;
+    private String url;
+    private ImageView iv;
+    private DisplayImageOptions options;
     private TextView tv_name;
     private TextView tv_sex;
     protected static Uri tempUri;
     protected static final int CHOOSE_PICTURE = 0;
     protected static final int TAKE_PICTURE = 1;
     private static final int CROP_SMALL_PICTURE = 2;
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            tv_sex.setText(sex);
+            tv_name.setText(name);
+            ImageLoader.getInstance().displayImage(url,iv);
+        }
+    };
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -68,7 +95,7 @@ public class MineProfileActivity extends AppCompatActivity {
             }
         }
     };
-    private ImageView iv;
+
 
 
     /**
@@ -182,15 +209,43 @@ public class MineProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mine_profile);
         findView();
         setOnClick();
+        init();
         setContent();
     }
 
+
+
     private void setContent() {
-        SharedPreferences spf = getSharedPreferences("count", Context.MODE_APPEND);
-        String name = spf.getString("Name","");
-        String sex = spf.getString("Sex","");
-        tv_name.setText(name);
-        tv_sex.setText(sex);
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               Httpss http = new Httpss();
+               NameValuePair pair = new BasicNameValuePair("id", Utils.id);
+               String s = http.setAndGet(u,pair);
+               try {
+                   JSONObject object = new JSONObject(s);
+                   name = object.getString("name");
+                   sex = object.getString("sex");
+                   url = object.getString("img");
+                   Message msg =new Message();
+                   mHandler.sendMessage(msg);
+               } catch (JSONException e) {
+                   e.printStackTrace();
+               }
+           }
+       }).start();
+    }
+    private void init() {
+
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.ic_stub) // 设置图片下载期间显示的图片
+                .showImageForEmptyUri(R.drawable.ic_empty)// 设置图片Uri为空或是错误的时候显示的图片
+                .showImageOnFail(R.drawable.ic_error)// 设置图片加载或解码过程中发生错误显示的图片
+                .cacheInMemory(true)  // 设置下载的图片是否缓存在内存中
+                .cacheOnDisk(true)  // 设置下载的图片是否缓存在SD卡中
+                .considerExifParams(true)
+                .displayer(new CircleBitmapDisplayer(Color.WHITE, 5))// 设置成圆角图片
+                .build();// 创建配置过得DisplayImageOption对象
     }
 
     private void setOnClick() {
@@ -198,6 +253,7 @@ public class MineProfileActivity extends AppCompatActivity {
         btn1.setOnClickListener(mListener);
         btn2.setOnClickListener(mListener);
         btn3.setOnClickListener(mListener);
+
     }
 
     private void findView() {

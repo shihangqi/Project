@@ -30,6 +30,7 @@
                 android:gravity="center"
                 android:textSize="30dp"/>
 
+
         </LinearLayout>
 
         <LinearLayout
@@ -94,6 +95,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/tv_name"
+                android:gravity="center"
+                android:textSize="20dp"
                 android:layout_weight="1"/>
 
             <ImageButton
@@ -130,6 +133,9 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+
                 android:id="@+id/tv_sex"
                 android:layout_weight="1"/>
             <ImageButton
@@ -148,6 +154,7 @@
             android:background="@color/gray" />
 
     </LinearLayout>
+
 
 
 </LinearLayout>

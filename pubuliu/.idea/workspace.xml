@@ -103,13 +103,13 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane />
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">

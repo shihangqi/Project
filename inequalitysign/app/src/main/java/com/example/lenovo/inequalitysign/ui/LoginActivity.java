@@ -63,18 +63,16 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
             if(response_server.equals("loginfail")){
-                Log.e("--------------石航琪失败",response_server);
+
                 Toast.makeText(LoginActivity.this,"登录失败",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(LoginActivity.this,LoginActivity.class);
                 startActivity(i);
             }else{
-                Log.e("-----石航琪成功",response_server);
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
                 Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
-                Log.e("Utils.flag",Utils.flag+"");
+                Log.e("QQ登陆",Utils.id);
                 startActivity(i);
             }
         }
@@ -323,12 +321,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void run() {
 
                         NameValuePair pair = new BasicNameValuePair("user_id", openid);
-                        Log.e("++++++++",pair.getName().toString());
-                        Log.e("++++++++",pair.getValue().toString());
-                        Log.e("++++++++",pair.toString());
                         Httpss h = new Httpss();
                         response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
-                        Log.e("++++++++++=",response_server);
                         Message msg = new Message();
                         handler1.sendMessage(msg);
 
@@ -417,11 +411,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             Httpss h = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
-                            Log.e("++++++++",pair.getName().toString());
-                            Log.e("++++++++",pair.getValue().toString());
-                            Log.e("++++++++",pair.toString());
                             response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
-                            Log.e("++++",response_server);
                         }
                     }).start();
                     Message msg1 =new Message();

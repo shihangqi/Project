@@ -7,6 +7,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,8 +40,14 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            DiningAdapter adapter = new DiningAdapter(SearchActivity.this,ls);
-            lv.setAdapter(adapter);
+            if(msg.what ==1){
+                lv.setVisibility(View.VISIBLE);
+                DiningAdapter adapter = new DiningAdapter(SearchActivity.this,ls);
+                lv.setAdapter(adapter);
+            }else{
+                lv.setVisibility(View.GONE);
+            }
+
 
         }
     };
@@ -95,7 +104,47 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         findView();
         setOnClick();
+        et.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
+        }
+
+            @Override
+            public void afterTextChanged(final Editable editable) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ls.clear();
+                        String s1 = editable.toString();
+                        Log.e("S1",s1);
+                        Message msg = new Message();
+                        if(s1.length()!= 0 ){
+
+                            Httpss  http = new Httpss();
+                            NameValuePair pair = new BasicNameValuePair("content",s1);
+                            NameValuePair pair1 = new BasicNameValuePair("city",Utils.city);
+                            String s = http.setAndGet(u,pair,pair1);
+                            ls = http.parser(s);
+                            msg.what = 1;
+
+                        }else{
+                           msg.what = 0;
+                        }
+
+                        mHandler.sendMessage(msg);
+
+                    }
+                }).start();
+            }
+        });
 
     }
 
