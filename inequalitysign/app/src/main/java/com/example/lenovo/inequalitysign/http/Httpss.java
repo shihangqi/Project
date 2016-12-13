@@ -90,7 +90,7 @@ public class Httpss {
             JSONArray array = new JSONArray(s);
             for(int i =0 ; i < array.length();i++){
                 JSONObject object = array.getJSONObject(i);
-                String shop_id = object.getString("shop_id");
+                String shop_id = object.getString("id");
                 String urll = object.getString("shop_img_small");
                 String name = object.getString("shop_name");
                 String intro = object.getString("shop_description");

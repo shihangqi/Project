@@ -22,6 +22,9 @@ import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,11 +42,25 @@ public class DiningInformationActivity extends AppCompatActivity {
     private String id;
     private TextView tv_name;
     private ImageView img;
+    private String s;
     private String u = Utils.SHOP_URL+"store";
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            try {
+                JSONObject object = new JSONObject(s);
+                String nowtype1 = object.getString("now_type1");
+                String nowtype2 = object.getString("now_type2");
+                String nowtype3 = object.getString("now_type3");
+                String alltype1 = object.getString("all_type1");
+                String alltype2 = object.getString("all_type2");
+                String alltype3 = object.getString("all_type3");
+                String add = object.getString("shop_address");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             tv_name.setText(name);
             img.setImageBitmap(bitmap);
         }
@@ -102,25 +119,29 @@ public class DiningInformationActivity extends AppCompatActivity {
 
     }
 
-    private void setType() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Httpss http = new Httpss();
-                NameValuePair pair = new BasicNameValuePair("shop_id",id);
-                String s = http.setAndGet(u,pair);
-                Message msg = new Message();
-
-
-            }
-        }).start();
-    }
+//    private void setType() {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Httpss http = new Httpss();
+//                NameValuePair pair = new BasicNameValuePair("shop_id",id);
+//                String s = http.setAndGet(u,pair);
+//                Message msg = new Message();
+//
+//
+//            }
+//        }).start();
+//    }
 
     private void setContent() {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 http();
+                Httpss http = new Httpss();
+                NameValuePair pair = new BasicNameValuePair("shop_id",id);
+                s = http.setAndGet(u,pair);
+                Log.e("StringD",s);
                 Message msg = new Message();
                 mHandler.sendMessage(msg);
             }

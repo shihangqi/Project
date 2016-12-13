@@ -78,6 +78,7 @@
                android:layout_width="wrap_content"
                android:layout_height="match_parent"
                android:layout_weight="1"
+               android:id="@+id/Dtv1"
                android:textSize="20dp"
                android:gravity="center"
                android:textStyle="bold"
@@ -87,6 +88,7 @@
                android:layout_height="match_parent"
                android:layout_weight="1"
                android:textSize="20dp"
+               android:id="@+id/Dtv11"
                android:gravity="center"
                android:textStyle="bold"
                android:text=" 7桌"/>
@@ -101,6 +103,7 @@
                android:layout_width="wrap_content"
                android:layout_height="match_parent"
                android:layout_weight="1"
+               android:id="@+id/Dtv2"
                android:textSize="20dp"
                android:textStyle="bold"
                android:gravity="center"
@@ -110,6 +113,7 @@
                android:layout_height="match_parent"
                android:layout_weight="1"
                android:textSize="20dp"
+               android:id="@+id/Dtv21"
                android:gravity="center"
                android:textStyle="bold"
                android:text="6桌"/>
@@ -128,6 +132,7 @@
                android:textSize="20dp"
                android:gravity="center"
                android:textStyle="bold"
+               android:id="@+id/Dtv3"
                android:text="大桌"/>
            <TextView
                android:layout_width="wrap_content"
@@ -135,6 +140,7 @@
                android:layout_weight="1"
                android:textSize="20dp"
                android:gravity="center"
+               android:id="@+id/Dtv31"
                android:textStyle="bold"
                android:text="6桌"/>
 

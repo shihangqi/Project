@@ -1,6 +1,7 @@
 package com.example.lenovo.inequalitysign.adapter;
 
 import android.app.Application;
+import android.app.Notification;
 import android.content.Context;
 import android.util.Log;
 
@@ -11,6 +12,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.PushAgent;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.entity.UMessage;
 
 /**
  * Created by ff on 2016/11/29.
@@ -37,6 +40,17 @@ public class MyApplication extends Application {
         });
         String device_token = mPushAgent.getRegistrationId();
         Utils.push_id = device_token;
+        UmengMessageHandler messageHandler = new UmengMessageHandler(){
+            @Override
+            public Notification getNotification(Context var1, UMessage var2) {
+
+                Utils.now = var2.text.substring(var2.text.indexOf("到")+1,var2.text.indexOf("号"));
+
+                return null;
+            }
+        };
+        mPushAgent.setMessageHandler(messageHandler);
+
     }
 
     private static void initImageLoader(Context context) {

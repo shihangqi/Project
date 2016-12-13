@@ -50,7 +50,7 @@ public class DiningActivity extends Activity {
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
                     intent.putExtra("Id",ls.get(i).getShop_id());
-                    Log.e("URL",ls.get(i).getUrl());
+
                     startActivityForResult(intent,i);
                 }
             });
@@ -97,6 +97,7 @@ public class DiningActivity extends Activity {
                     break;
                 case R.id.yyt:
                     //展示营业厅列表数据
+
                     displayYyt();
                     break;
             }
@@ -126,12 +127,13 @@ public class DiningActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                ls = new ArrayList<Dining>();
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city", Utils.city);
                 s = http.setAndGet(u1,pair);
-                Log.e("yyt",s);
+
                 ls = http.parser(s);
+
                 Message msg = new Message();
                 mHandler1.sendMessage(msg);
 
@@ -148,7 +150,7 @@ public class DiningActivity extends Activity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
+                ls = new ArrayList<Dining>();
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city", Utils.city);
                 s =http.setAndGet(u,pair);

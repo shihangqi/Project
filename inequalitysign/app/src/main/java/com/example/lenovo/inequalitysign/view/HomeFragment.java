@@ -87,6 +87,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("Context","HomeFragment");
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
+                    intent.putExtra("Id",ls.get(i).getShop_id());
                     startActivity(intent);
                 }
             });
@@ -197,7 +198,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         Httpss http = new Httpss();
-                        NameValuePair pair = new BasicNameValuePair("city","3");
+                        NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                         String s = http.setAndGet(u,pair);
                         ls = http.parser(s);
                         Message msg = new Message();
@@ -215,7 +216,7 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void run() {
                         Httpss http = new Httpss();
-                        NameValuePair pair = new BasicNameValuePair("city","3");
+                        NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                         String s = http.setAndGet(u,pair);
                         Log.e("Home",s);
                         ls = http.parser(s);
