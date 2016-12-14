@@ -98,7 +98,9 @@ public class OrderInformationActivity extends AppCompatActivity {
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
                 NameValuePair pair1 = new BasicNameValuePair("shop_id",getIntent().getStringExtra("Id"));
-                NameValuePair pair2 = new BasicNameValuePair("type",getIntent().getStringExtra("type"));
+
+                NameValuePair pair2 = new BasicNameValuePair("type",getIntent().getStringExtra("Type"));
+                Log.e("s",getIntent().getStringExtra("Type"));
                 String s = http.setAndGet(u,pair,pair1,pair2);
                 try {
                     JSONObject object = new JSONObject(s);
@@ -106,6 +108,10 @@ public class OrderInformationActivity extends AppCompatActivity {
                     now = object.getString("now");
                     add = object.getString("shop_address");
                     name = object.getString("shop_name");
+                    Log.e("StringDD",all);
+                    Log.e("StringDD",now);
+                    Log.e("StringDD",add);
+                    Log.e("StringDD",name);
                     Message msg = new Message();
                     mHandler.sendMessage(msg);
                 } catch (JSONException e) {
@@ -127,7 +133,7 @@ public class OrderInformationActivity extends AppCompatActivity {
         tv1 = (TextView)findViewById(R.id.tv_num);//取到的号
         tv2 = (TextView)findViewById(R.id.tv_num1);//当前已到
         tv3 = (TextView)findViewById(R.id.tv_num2);//还需等待
-        tv_address = (TextView)findViewById(R.id.address);
+        tv_address = (TextView)findViewById(R.id.tv_address);
 
     }
 }

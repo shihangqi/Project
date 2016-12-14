@@ -54,7 +54,7 @@
            <TextView
                android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:text="餐桌类型"
                android:textSize="22dp"
                android:layout_gravity="center"
@@ -62,10 +62,14 @@
            <TextView
                android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:text="等待桌数"
                android:textAlignment="center"
                android:textSize="22dp"/>
+           <TextView
+               android:layout_width="0dp"
+               android:layout_height="match_parent"
+               android:layout_weight="1"/>
 
 
        </LinearLayout>
@@ -76,24 +80,32 @@
            android:orientation="horizontal"
            android:visibility="visible">
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:id="@+id/Dtv1"
                android:textSize="20dp"
                android:gravity="center"
                android:textStyle="bold"
                android:text="小桌"/>
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:textSize="20dp"
                android:id="@+id/Dtv11"
                android:gravity="center"
                android:textStyle="bold"
                android:text=" 7桌"/>
-
+           <ImageButton
+               android:layout_width="0dp"
+               android:layout_height="30dp"
+               android:layout_weight="1"
+               android:id="@+id/ib1"
+               android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+               android:src="@drawable/daixuan"
+               android:background="@drawable/select"/>
        </LinearLayout>
        <LinearLayout
            android:layout_width="match_parent"
@@ -102,24 +114,32 @@
            android:orientation="horizontal"
            android:visibility="visible">
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:id="@+id/Dtv2"
                android:textSize="20dp"
                android:textStyle="bold"
                android:gravity="center"
                android:text="中桌"/>
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:textSize="20dp"
                android:id="@+id/Dtv21"
                android:gravity="center"
                android:textStyle="bold"
                android:text="6桌"/>
-
+           <ImageButton
+               android:layout_width="0dp"
+               android:layout_height="30dp"
+               android:layout_weight="1"
+               android:id="@+id/ib2"
+               android:layout_marginRight="10dp"
+               android:layout_gravity="center"
+               android:src="@drawable/daixuan"
+               android:background="@drawable/select"/>
 
        </LinearLayout>
        <LinearLayout
@@ -129,25 +149,32 @@
            android:orientation="horizontal"
            android:visibility="visible">
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:textSize="20dp"
                android:gravity="center"
                android:textStyle="bold"
                android:id="@+id/Dtv3"
                android:text="大桌"/>
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="0dp"
                android:layout_height="match_parent"
-               android:layout_weight="1"
+               android:layout_weight="5"
                android:textSize="20dp"
                android:gravity="center"
                android:id="@+id/Dtv31"
                android:textStyle="bold"
                android:text="6桌"/>
-
-
+           <ImageButton
+               android:layout_width="0dp"
+               android:layout_height="30dp"
+               android:layout_weight="1"
+               android:layout_marginRight="10dp"
+               android:layout_gravity="center"
+               android:src="@drawable/daixuan"
+               android:id="@+id/ib3"
+               android:background="@drawable/select"/>
        </LinearLayout>
    </LinearLayout>
     <LinearLayout

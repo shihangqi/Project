@@ -53,7 +53,7 @@ public class EditnameActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             Httpss http = new Httpss();
-                            NameValuePair pair1 = new BasicNameValuePair("user_name","男");
+                            NameValuePair pair1 = new BasicNameValuePair("user_name",et_name.getText().toString());
                             NameValuePair pair11 = new BasicNameValuePair("id", Utils.id);
                             result = http.setAndGet(u,pair1,pair11);
                             Message msg = new Message();

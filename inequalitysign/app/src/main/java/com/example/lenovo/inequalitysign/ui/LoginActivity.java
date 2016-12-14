@@ -321,8 +321,9 @@ public class LoginActivity extends AppCompatActivity {
                     public void run() {
 
                         NameValuePair pair = new BasicNameValuePair("user_id", openid);
+                        NameValuePair pair1 = new BasicNameValuePair("push_id",Utils.push_id);
                         Httpss h = new Httpss();
-                        response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
+                        response_server = h.setAndGet(Utils.USER_URL+"login",pair,pair1);
                         Message msg = new Message();
                         handler1.sendMessage(msg);
 
@@ -411,7 +412,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void run() {
                             Httpss h = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
-                            response_server = h.setAndGet("http://10.7.88.34:8090/user/login",pair);
+                            NameValuePair pair1 = new BasicNameValuePair("user_tel",Utils.push_id);
+                            response_server = h.setAndGet(Utils.USER_URL+"login",pair);
                         }
                     }).start();
                     Message msg1 =new Message();

@@ -70,7 +70,7 @@ public class Gender extends AppCompatActivity {
                         @Override
                         public void run() {
                             Httpss http = new Httpss();
-                            NameValuePair pair1 = new BasicNameValuePair("user_sex","男");
+                            NameValuePair pair1 = new BasicNameValuePair("user_sex","女");
                             NameValuePair pair11 = new BasicNameValuePair("id", Utils.id);
                             result = http.setAndGet(u,pair1,pair11);
                             Message msg = new Message();
@@ -91,7 +91,14 @@ public class Gender extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gender);
         findView();
+        setOnClick();
         
+    }
+
+    private void setOnClick() {
+        btn.setOnClickListener(mListener);
+        btn1.setOnClickListener(mListener);
+        btn_back.setOnClickListener(mListener);
     }
 
     private void findView() {
