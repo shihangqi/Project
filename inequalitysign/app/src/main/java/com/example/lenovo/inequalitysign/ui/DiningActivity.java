@@ -3,6 +3,7 @@ package com.example.lenovo.inequalitysign.ui;
 import android.app.Activity;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -58,7 +59,7 @@ public class DiningActivity extends Activity {
     };
     private Handler mHandler1 = new Handler(){
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(Message msg) {//营业厅列表的点击事件
             super.handleMessage(msg);
 
             adapter = new DiningAdapter(DiningActivity.this,ls);
@@ -70,9 +71,8 @@ public class DiningActivity extends Activity {
                     Intent intent = new Intent();
                     intent.setClass(DiningActivity.this, YytActivity.class);
                     intent.putExtra("Context","DiningActivity");
-                    intent.putExtra("Name",ls.get(i).getName());
-                    intent.putExtra("Url",ls.get(i).getUrl());
                     intent.putExtra("Id",ls.get(i).getShop_id());
+                    Log.e("SHOP_ID1",ls.get(i).getShop_id());
                     startActivityForResult(intent,i);
                 }
             });
@@ -131,9 +131,7 @@ public class DiningActivity extends Activity {
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("city", Utils.city);
                 s = http.setAndGet(u1,pair);
-
                 ls = http.parser(s);
-
                 Message msg = new Message();
                 mHandler1.sendMessage(msg);
 

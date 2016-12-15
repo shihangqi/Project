@@ -1,5 +1,7 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
@@ -34,18 +37,8 @@ public class OrderInformationActivity extends AppCompatActivity {
     private TextView tv3;
     private TextView tv_address;
 
-    private Handler mHandler =new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            tv.setText(name);
-            tv1.setText(all);
-            tv2.setText(now);
-            int i = Integer.parseInt(all)-Integer.parseInt(now);
-            tv3.setText(i+"");
-            tv_address.setText(add);
-        }
-    };
+
+
     private View.OnClickListener mListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -86,40 +79,22 @@ public class OrderInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_information);
         finView();
         setOnClick();
-        setContent();
+        Intent i = getIntent();
+        name = i.getStringExtra("NAME");
+        add = i.getStringExtra("ADDRESS");
+        all = i.getStringExtra("ALL");
+        now = i.getStringExtra("NOW");
+        tv.setText(name);
+        tv1.setText(all);
+        tv2.setText(now);
+        int i1 = Integer.parseInt(all)-Integer.parseInt(now);
+        tv3.setText(i1+"");
+        tv_address.setText(add);
 
 
     }
 
-    private void setContent() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Httpss http = new Httpss();
-                NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
-                NameValuePair pair1 = new BasicNameValuePair("shop_id",getIntent().getStringExtra("Id"));
 
-                NameValuePair pair2 = new BasicNameValuePair("type",getIntent().getStringExtra("Type"));
-                Log.e("s",getIntent().getStringExtra("Type"));
-                String s = http.setAndGet(u,pair,pair1,pair2);
-                try {
-                    JSONObject object = new JSONObject(s);
-                    all = object.getString("all");
-                    now = object.getString("now");
-                    add = object.getString("shop_address");
-                    name = object.getString("shop_name");
-                    Log.e("StringDD",all);
-                    Log.e("StringDD",now);
-                    Log.e("StringDD",add);
-                    Log.e("StringDD",name);
-                    Message msg = new Message();
-                    mHandler.sendMessage(msg);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
 
     private void setOnClick() {
         btn.setOnClickListener(mListener);

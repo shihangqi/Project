@@ -20,16 +20,18 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
+
 import android.widget.TextView;
+
 
 import com.example.lenovo.inequalitysign.R;
 import com.example.lenovo.inequalitysign.Utils.Utils;
+
 import com.example.lenovo.inequalitysign.http.Httpss;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.CircleBitmapDisplayer;
-import com.nostra13.universalimageloader.utils.L;
+
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -37,24 +39,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+
 
 public class DiningInformationActivity extends AppCompatActivity {
 
     private Button btn1;
     private DisplayImageOptions options;
     private Button btn;
-
+    private String all1="";
+    private String now="";
+    private String add11="";
+    private String name1="";
     private String name;
     private String id;
     private TextView tv_name;
     private ImageView img;
-    private String s;
-    private String result;
+    private String s="";
+    private String content="";
+    private String result="";
     private TextView tv1;
     private TextView tv11;
     private TextView tv2;
@@ -108,7 +110,6 @@ public class DiningInformationActivity extends AppCompatActivity {
                     ib3.setImageResource(R.drawable.xuanzhong);
                     state =1;
                     type =  3;
-
                     break;
             }
         }
@@ -133,73 +134,161 @@ public class DiningInformationActivity extends AppCompatActivity {
             }
         }
     };
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler(){//处理页面数据
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+                Log.e("++++++++",what+"");
+                switch (what){
+                    case 1:
+                        ib1 = (ImageButton)findViewById(R.id.ib1);
+                        ib1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ib1.setImageResource(R.drawable.xuanzhong);
+                                type = 1;
+                            }
+                        });
+                        Log.e("+=====",type_name1+"111");
+                        int i1 = Integer.parseInt(alltype1);
+                        int k1 = Integer.parseInt(nowtype1);
+                        tv1.setText(type_name1);
 
-           switch (what){
-               case 1:
-                   ib1 = (ImageButton)findViewById(R.id.ib1);
-                   ib1.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           ib1.setImageResource(R.drawable.xuanzhong);
-                           type = 1;
-                       }
-                   });
-                   int i1 = Integer.parseInt(alltype1);
-                   int k1 = Integer.parseInt(nowtype1);
-                   tv1.setText(type_name1);
-                   tv11.setText(i1-k1+"");
-                   ll1.setVisibility(View.VISIBLE);
-                   ll2.setVisibility(View.GONE);
-                   ll3.setVisibility(View.GONE);
+                        tv11.setText(i1-k1+"");
+                        ll1.setVisibility(View.VISIBLE);
+                        ll2.setVisibility(View.GONE);
+                        ll3.setVisibility(View.GONE);
+                        break;
+                    case 2:
+                        ib1 = (ImageButton)findViewById(R.id.ib1);
+                        ib2 = (ImageButton)findViewById(R.id.ib2);
+                        ib1.setOnClickListener(Listener2);
+                        ib2.setOnClickListener(Listener2);
+                        int i11 = Integer.parseInt(alltype1);
+                        int k11 = Integer.parseInt(nowtype1);
+                        int i2 = Integer.parseInt(alltype2);
+                        int k2 = Integer.parseInt(nowtype2);
+                        Log.e("++++",alltype2);
+                        ll1.setVisibility(View.VISIBLE);
+                        ll2.setVisibility(View.VISIBLE);
+                        ll3.setVisibility(View.GONE);
+                        tv1.setText(type_name1);
+                        tv11.setText(i11-k11+"");
+                        tv2.setText(type_name2);
+                        tv21.setText(i2-k2+"");
+                        break;
+                    case 3:
+                        ib1 = (ImageButton)findViewById(R.id.ib1);
+                        ib2 = (ImageButton)findViewById(R.id.ib2);
+                        ib3 = (ImageButton)findViewById(R.id.ib3);
+                        ib1.setOnClickListener(Listener3);
+                        ib2.setOnClickListener(Listener3);
+                        ib3.setOnClickListener(Listener3);
+                        int ii1 = Integer.parseInt(alltype1);
+                        int kk1 = Integer.parseInt(nowtype1);
+                        int ii2 = Integer.parseInt(alltype2);
+                        int kk2 = Integer.parseInt(nowtype2);
+                        int i3 = Integer.parseInt(alltype3);
+                        int k3 = Integer.parseInt(nowtype3);
 
-              case 2:
-                  ib1 = (ImageButton)findViewById(R.id.ib1);
-                  ib2 = (ImageButton)findViewById(R.id.ib2);
-                  ib1.setOnClickListener(Listener2);
-                  ib2.setOnClickListener(Listener2);
-                   int i11 = Integer.parseInt(alltype1);
-                   int k11 = Integer.parseInt(nowtype1);
-                   int i2 = Integer.parseInt(alltype2);
-                   int k2 = Integer.parseInt(nowtype1);
-                   ll1.setVisibility(View.VISIBLE);
-                   ll2.setVisibility(View.VISIBLE);
-                   ll3.setVisibility(View.GONE);
-                   tv1.setText(type_name1);
-                   tv11.setText(i11-k11+"");
-                   tv2.setText(type_name2);
-                   tv21.setText(i2-k2+"");
-                   break;
-               case 3:
-                   ib1 = (ImageButton)findViewById(R.id.ib1);
-                   ib2 = (ImageButton)findViewById(R.id.ib2);
-                   ib3 = (ImageButton)findViewById(R.id.ib3);
-                   ib1.setOnClickListener(Listener3);
-                   ib2.setOnClickListener(Listener3);
-                   ib3.setOnClickListener(Listener3);
-                   int ii1 = Integer.parseInt(alltype1);
-                   int kk1 = Integer.parseInt(nowtype1);
-                   int ii2 = Integer.parseInt(alltype2);
-                   int kk2 = Integer.parseInt(nowtype1);
-                   int i3 = Integer.parseInt(alltype3);
-                   int k3 = Integer.parseInt(nowtype1);
-                   ll1.setVisibility(View.VISIBLE);
-                   ll2.setVisibility(View.VISIBLE);
-                   ll3.setVisibility(View.VISIBLE);
-                   tv1.setText(type_name1);
-                  tv11.setText(ii1-kk1+"");
-                   tv2.setText(type_name2);
-                  tv21.setText(ii2-kk2+"");
-                   tv3.setText(type_name3);
-                  tv31.setText(i3-k3+"");
-                   break;
-           }
-            add.setText(add1);
-            tv_name.setText(name);
-            ImageLoader.getInstance().displayImage(img1,img);
+                        ll1.setVisibility(View.VISIBLE);
+                        ll2.setVisibility(View.VISIBLE);
+                        ll3.setVisibility(View.VISIBLE);
+                        tv1.setText(type_name1);
+                        tv11.setText(ii1-kk1+"");
+                        tv2.setText(type_name2);
+                        tv21.setText(ii2-kk2+"");
+                        tv3.setText(type_name3);
+                        tv31.setText(i3-k3+"");
+                        break;
+                }
+                add.setText(add1);
+                tv_name.setText(name);
+                ImageLoader.getInstance().displayImage(img1,img);
+
+
+
+        }
+    };
+    /**
+     * 处理取号事件
+     */
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            try {
+                JSONObject object = new JSONObject(s);
+                result  = object.getString("result");
+                Log.e("RESULT",result);
+                if(result.equals("fail")){
+                    AlertDialog.Builder adb = new AlertDialog.Builder(DiningInformationActivity.this);
+                    adb.setTitle("温馨提示");
+                    adb.setMessage("您已经在这家店取号");
+                    adb.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            if(content.equals("HomeFragment")){
+                                Utils.flag =1;
+                                Intent i2 = new Intent();
+                                i2.setClass(DiningInformationActivity.this,MainActivity.class);
+                                startActivity(i2);
+                            }else{
+                                Intent i3 = new Intent();
+                                i3.setClass(DiningInformationActivity.this,DiningActivity.class);
+                                startActivity(i3);
+                            }
+                        }
+                    });//adb
+                    adb.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if(content.equals("HomeFragment")){
+                                Utils.flag =1;
+                                Intent i2 = new Intent();
+                                i2.setClass(DiningInformationActivity.this,MainActivity.class);
+                                startActivity(i2);
+                            }else{
+                                Intent i3 = new Intent();
+
+
+                                i3.setClass(DiningInformationActivity.this,DiningActivity.class);
+                                startActivity(i3);
+                            }
+                        }
+                    });//adb
+                    adb.create();
+                    adb.show();
+                }else{
+                    Log.e("=====",1+"");
+                    all1 = object.getString("all");
+                    now = object.getString("now");
+                    add11 = object.getString("shop_address");
+                    name1 = object.getString("shop_name");
+
+                    Intent intent = new Intent();
+                    intent.setClass(DiningInformationActivity.this,OrderInformationActivity.class);
+                    String id = getIntent().getStringExtra("Id");
+                    intent.putExtra("Context",content);
+                    intent.putExtra("Id",id);
+                    intent.putExtra("Type",type+"");
+                    intent.putExtra("ALL",all1);
+                    intent.putExtra("NOW",now);
+                    intent.putExtra("ADDRESS",add11);
+                    intent.putExtra("NAME",name1);
+
+                    startActivity(intent);
+
+
+                }
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
         }
     };
 
@@ -233,17 +322,23 @@ public class DiningInformationActivity extends AppCompatActivity {
                         adb.create();
                         adb.show();
                     }else{
-                        Intent ii = getIntent();
-                        String name1 = ii.getStringExtra("Name");
-                        String id = ii.getStringExtra("Id");
-                        String start1 = ii.getStringExtra("Context");
-                        Intent intent = new Intent(DiningInformationActivity.this,OrderInformationActivity.class);
-                        intent.putExtra("Type",type+"");
-                        intent.putExtra("Name",name1);
-                        intent.putExtra("Id",id);
-                        intent.putExtra("Context",start1);
-                        startActivity(intent);
-                    }
+
+                        new Thread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                Httpss http = new Httpss();
+                                NameValuePair pair = new BasicNameValuePair("user_id", Utils.id);
+                                NameValuePair pair1 = new BasicNameValuePair("shop_id",getIntent().getStringExtra("Id"));
+                                NameValuePair pair2 = new BasicNameValuePair("type",type+"");
+                                s = http.setAndGet(Utils.SHOP_URL+"join",pair1,pair2,pair);
+                                Message msg = new Message();
+                                handler.sendMessage(msg);
+                            }
+                        }).start();//new Thread
+
+
+                    }//else
 
                     break;
             }
@@ -263,6 +358,8 @@ public class DiningInformationActivity extends AppCompatActivity {
         Intent i = getIntent();
         name = i.getStringExtra("Name");
         id = i.getStringExtra("Id");
+        content  = i.getStringExtra("Context");
+
         setContent();
 
 
@@ -295,10 +392,11 @@ public class DiningInformationActivity extends AppCompatActivity {
                 Httpss http = new Httpss();
                 NameValuePair pair = new BasicNameValuePair("shop_id",id);
                 s = http.setAndGet(u,pair);
-                Message msg = new Message();
-                try {
-                        JSONObject object = new JSONObject(s);
 
+                try {
+
+                        JSONObject object = new JSONObject(s);
+                    Log.e("===========",s.toString());
                         nowtype1 = object.getString("now_type1");
                         nowtype2 = object.getString("now_type2");
                         nowtype3 = object.getString("now_type3");
@@ -310,26 +408,25 @@ public class DiningInformationActivity extends AppCompatActivity {
                         alltype3 = object.getString("all_type3");
                         add1 = object.getString("shop_address");
                         img1 = object.getString("shop_img_big");
-                        result = object.getString("result");
-                        Log.e("result",result);
-
-
-
-                    if(nowtype2.equals("null")){
-                        what =1;
-                    }else{
-                        if(nowtype3.equals("null")){
-                            what =2;
+                        if(nowtype2.equals("null")){
+                            what =1;
+                        }else{
+                            if(nowtype3.equals("null")){
+                                what =2;
+                            }
+                            else{
+                                what =3;
+                            }
                         }
-                        else{
-                            what =3;
-                        }
-                    }
+
+//
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
+                Message msg = new Message();
                 mHandler.sendMessage(msg);
             }
         }).start();

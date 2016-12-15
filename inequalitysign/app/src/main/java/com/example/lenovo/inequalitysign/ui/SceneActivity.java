@@ -1,6 +1,7 @@
 package com.example.lenovo.inequalitysign.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -61,6 +62,7 @@ public class SceneActivity extends AppCompatActivity {
                     window.showAsDropDown(btn_menu);
                     break;
                 case R.id.camera:
+
                     break;
                 case R.id.picture:
                     break;

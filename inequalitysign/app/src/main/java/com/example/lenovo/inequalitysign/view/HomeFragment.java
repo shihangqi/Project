@@ -2,6 +2,7 @@ package com.example.lenovo.inequalitysign.view;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
     private ImageButton btn1;
     private ImageButton btn2;
     private Button btn3;
-    private Spinner spinner;
+
     private ListView lv;
     private int currentId = 0;
     private DiningAdapter adapter;
@@ -88,12 +89,14 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("Name",ls.get(i).getName());
                     intent.putExtra("Url",ls.get(i).getUrl());
                     intent.putExtra("Id",ls.get(i).getShop_id());
+                    
                     startActivity(intent);
                 }
             });
 
         }
     };
+    private Spinner spinner;
 
     /**
      * 设置ListView的高度
@@ -155,7 +158,7 @@ public class HomeFragment extends Fragment {
         findView();
         setOnClick();
         setaddress();
-
+       
         setImg();
     }
 
@@ -177,13 +180,14 @@ public class HomeFragment extends Fragment {
      *
      *
      */
+   
 
     private void setaddress() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 getActivity().getApplicationContext(),
                 R.array.languages,
-                android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+               android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -193,7 +197,9 @@ public class HomeFragment extends Fragment {
                 // TODO Auto-generated method stub
                 //获取选择的城市，并记录下来，
                 String selected = arg0.getItemAtPosition(arg2).toString();
+
                 Utils.city = selected;
+
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -215,6 +221,7 @@ public class HomeFragment extends Fragment {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+
                         Httpss http = new Httpss();
                         NameValuePair pair = new BasicNameValuePair("city",Utils.city);
                         String s = http.setAndGet(u,pair);
