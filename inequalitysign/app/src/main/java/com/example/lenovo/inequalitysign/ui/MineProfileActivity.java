@@ -1,9 +1,12 @@
 package com.example.lenovo.inequalitysign.ui;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
@@ -12,6 +15,8 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -36,6 +41,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 public class MineProfileActivity extends AppCompatActivity {
@@ -54,10 +60,9 @@ public class MineProfileActivity extends AppCompatActivity {
     private DisplayImageOptions options;
     private TextView tv_name;
     private TextView tv_sex;
-    protected static Uri tempUri;
-    protected static final int CHOOSE_PICTURE = 0;
-    protected static final int TAKE_PICTURE = 1;
-    private static final int CROP_SMALL_PICTURE = 2;
+    protected static final int CHOOSE_PICTURE = 0; //相册
+    protected static final int TAKE_PICTURE = 1; //相机
+    private static final int CROP_SMALL_PICTURE = 2; //截图
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -95,7 +100,7 @@ public class MineProfileActivity extends AppCompatActivity {
             }
         }
     };
-
+    private File tempFile;  //调用照相机返图片临时文件
 
 
     /**
@@ -103,12 +108,13 @@ public class MineProfileActivity extends AppCompatActivity {
      */
     private void LoadImg() {
         View view = LayoutInflater.from(this).inflate(R.layout.manager_popupwindow, null);
-        btn11 = (Button)findViewById(R.id.btn1);//照相；
-        btn12 = (Button)findViewById(R.id.btn2);//从相册中获取
-        btn13 = (Button)findViewById(R.id.btn3);//取消
+        btn11 = (Button)view.findViewById(R.id.btn1);//照相；
+        btn12 = (Button)view.findViewById(R.id.btn2);//从相册中获取
+        btn13 = (Button)view.findViewById(R.id.btn3);//取消
         final PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         popupWindow.setBackgroundDrawable(getResources().getDrawable(android.R.color.transparent));
         popupWindow.setOutsideTouchable(false);
+        popupWindow.setFocusable(true);
         View parent = LayoutInflater.from(this).inflate(R.layout.activity_mine_profile, null);
         popupWindow.showAtLocation(parent, Gravity.BOTTOM, 0, 0);
         //popupWindow在弹窗的时候背景半透明
@@ -128,9 +134,8 @@ public class MineProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //跳转到调用系统相机
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                tempUri = Uri.fromFile(new File(Environment.getExternalStorageDirectory(),"image.jpg"));
                //制定照片保存路径sd卡，image.jpg为一个临时文件，每次拍照后都会被替换
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, tempUri);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
                 startActivityForResult(intent, TAKE_PICTURE);
                 popupWindow.dismiss();
             }
@@ -154,65 +159,122 @@ public class MineProfileActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == RESULT_OK){//如果返回码可用
-            switch (requestCode){
-                case TAKE_PICTURE:   //开始对图片进行裁剪
-                    startPhotoZoom(tempUri);
-                    break;
-                case CHOOSE_PICTURE: //开始对图片进行裁剪处理
-                    startPhotoZoom(data.getData());
-                    break;
-                case CROP_SMALL_PICTURE: //让刚才裁剪的照片显示
-                    if(data != null){
-                        setImageToview(data);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("tempFile", tempFile);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        switch (requestCode) {
+            case TAKE_PICTURE: //调用系统相机返回
+                if (resultCode == RESULT_OK) {
+                    gotoClipActivity(Uri.fromFile(tempFile));
+                }
+                break;
+            case CHOOSE_PICTURE:  //调用系统相册返回
+                if (resultCode == RESULT_OK) {
+                    Uri uri = intent.getData();
+                    gotoClipActivity(uri);
+                }
+                break;
+            case CROP_SMALL_PICTURE:  //剪切图片返回
+                if (resultCode == RESULT_OK) {
+                    final Uri uri = intent.getData();
+                    if (uri == null) {
+                        return;
                     }
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+                    final String cropImagePath = getRealFilePathFromUri(getApplicationContext(), uri);
+                    Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
+                    iv.setImageBitmap(bitMap);
 
-    private void setImageToview(Intent data) {
-        Bundle extras = data.getExtras();
-        if(extras != null){
-            Bitmap photo = extras.getParcelable("data");
-            
+                    //此处后面可以将bitMap转为二进制上传后台网络
+                    //......
+
+                }
+                break;
         }
     }
-
     /**
-     * 裁剪图片实现方法
+     * 打开截图界面
+     *
      * @param uri
      */
-    private void startPhotoZoom(Uri uri) {
+    public void gotoClipActivity(Uri uri) {
         if (uri == null) {
-            Log.i("tag", "The uri is not exist.");
+            return;
         }
-        tempUri = uri;
-        Intent intent = new Intent("com.android.camera.action.CROP");
-        intent.setDataAndType(uri, "image/*");
-        // 设置裁剪
-        intent.putExtra("crop", "true");
-        // aspectX aspectY 是宽高的比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        // outputX outputY 是裁剪图片宽高
-        intent.putExtra("outputX", 150);
-        intent.putExtra("outputY", 150);
-        intent.putExtra("return-data", true);
+        Intent intent = new Intent();
+        intent.setClass(this, ClipImageActivity.class);
+        intent.setData(uri);
         startActivityForResult(intent, CROP_SMALL_PICTURE);
     }
+    public static String getRealFilePathFromUri(final Context context, final Uri uri) {
+        if (null == uri) return null;
+        final String scheme = uri.getScheme();
+        String data = null;
+        if (scheme == null)
+            data = uri.getPath();
+        else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
+            data = uri.getPath();
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            if (null != cursor) {
+                if (cursor.moveToFirst()) {
+                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                    if (index > -1) {
+                        data = cursor.getString(index);
+                    }
+                }
+                cursor.close();
+            }
+        }
+        return data;
+    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mine_profile);
+        createCameraTempFile(savedInstanceState);
         findView();
         setOnClick();
         init();
         setContent();
     }
 
+    /**
+     * 创建调用系统照相机待存储的临时文件
+     *
+     * @param savedInstanceState
+     */
+    private void createCameraTempFile(Bundle savedInstanceState) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("tempFile")) {
+            tempFile = (File) savedInstanceState.getSerializable("tempFile");
+        } else {
+            tempFile = new File(checkDirPath(Environment.getExternalStorageDirectory().getPath() + "/image/"),
+                    System.currentTimeMillis() + ".jpg");
+        }
+    }
+
+    /**
+     * 检查文件是否存在
+     * @param dirPath
+     * @return
+     */
+    private static String checkDirPath(String dirPath) {
+        if (TextUtils.isEmpty(dirPath)) {
+            return "";
+        }
+        File dir = new File(dirPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+        return dirPath;
+    }
 
 
     private void setContent() {
