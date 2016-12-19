@@ -8,7 +8,7 @@ public class Comment {
     private String date;
     private String comment;
     private String server;
-    private int star;
+     private int star;
 
     public Comment(String user, String date, String comment, String server,int star) {
         this.user = user;

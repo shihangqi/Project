@@ -2,6 +2,7 @@ package com.example.lenovo.inequalitysign.view;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
@@ -26,6 +27,7 @@ public class MineFragment extends Fragment {
         @Override
         public void onClick(View view) {
             switch (view.getId()){
+
                 case R.id.mypageB1:
                     //调到登陆界面 ,图片下面的字体改变成推出当前账号
 

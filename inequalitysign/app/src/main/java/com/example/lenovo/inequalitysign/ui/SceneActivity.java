@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -99,34 +100,16 @@ public class SceneActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.tv1:
-                Toast.makeText(SceneActivity.this,"tv1",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.tv2:
-                Toast.makeText(SceneActivity.this,"tv2",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.tv3:
-                Toast.makeText(SceneActivity.this,"tv3",Toast.LENGTH_SHORT).show();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
 
     private void initData() {
-//        ls.add(new Scene(R.drawable.axiangpo,"1"));
-//        ls.add(new Scene(R.drawable.budenghao,"2"));
-//        ls.add(new Scene(R.drawable.chunbing1,"3"));
-//        ls.add(new Scene(R.drawable.dianxin,"4"));
-//        ls.add(new Scene(R.drawable.emei,"5"));
-//        ls.add(new Scene(R.drawable.jiaotong,"6"));
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Httpss http = new Httpss();
                 String s = http.setAndGet(u);
+                Log.e("SCENE",s);
                 ls = http.parserScene(s);
                 Message msg = new Message();
                 mHandler.sendMessage(msg);

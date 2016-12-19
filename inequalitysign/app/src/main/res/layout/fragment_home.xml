@@ -16,20 +16,28 @@
             android:layout_height="50dp"
             android:background="@drawable/zzka"
             android:orientation="horizontal">
-            <Spinner
-                android:id="@+id/spinnerid"
-                android:padding="2dp"
-                android:layout_marginLeft="10dp"
-                android:layout_width="75dp"
-                android:layout_height="37dp"
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="30dp"
+                android:textSize="15dp"
+                android:id="@+id/tv_img"
+                android:ellipsize="end"
+                android:text="石家庄"
                 android:layout_gravity="center"
-                android:background="@drawable/shape_theme"
-                ></Spinner>
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/xiala1"
+                android:gravity="center"
+                android:padding="2dp"
+                />
+            <!--android:background="@drawable/shape_theme"-->
             <Button
                 android:id="@+id/btn_search"
                 android:paddingLeft="5dp"
                 android:layout_marginLeft="10dp"
-                android:layout_width="250dp"
+                android:layout_width="0dp"
+                android:layout_weight="3"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:text="请输入商店，营业厅"

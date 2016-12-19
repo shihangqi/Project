@@ -2,10 +2,13 @@ package com.example.lenovo.inequalitysign.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Rating;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.lenovo.inequalitysign.R;
@@ -58,6 +61,9 @@ public class CommentAdapter extends BaseAdapter {
         if(view == null){
             view = LayoutInflater.from(mContext).inflate(R.layout.comment_item,null);
         }
+        RatingBar ratingBar = (RatingBar)view.findViewById(R.id.ratingbar);
+        ratingBar.setRating(new Float(ls.get(i).getStar()));
+        Log.e("Star",ls.get(i).getStar()+"");
         TextView user_name = (TextView)view.findViewById(R.id.user_name);
         TextView time =(TextView)view.findViewById(R.id.time);
         TextView contnet = (TextView)view.findViewById(R.id.content);

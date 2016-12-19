@@ -1,5 +1,7 @@
 package com.example.lenovo.inequalitysign.http;
 
+import android.util.Log;
+
 import com.example.lenovo.inequalitysign.entity.Comment;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.entity.Order;
@@ -123,22 +125,24 @@ public class Httpss {
         }
         return ls_Rank;
     }
-//    public List<Order> parserOrder(String s){
-//        try {
-//            JSONArray array = new JSONArray(s);
-//            for(int i = 0;i < array.length(); i++){
-//                JSONObject object = array.getJSONObject(i);
-//                String url = object.getString("shop_img_small");
-//                String name = object.getString("shop_name");
-//                String address = object.getString("shop_address");
-//                int count = object.getInt("shop_count");
-//                ls_Order.add(new Order(i,url,name,address,count));
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return ls_Order;
-//    }
+    public List<Order> parserOrder(String s){
+        try {
+            JSONArray array = new JSONArray(s);
+            for(int i = 0;i < array.length(); i++){
+                JSONObject object = array.getJSONObject(i);
+                String url = object.getString("shop_img_small");
+                String name = object.getString("shop_name");
+                String num = object.getString("num");
+                String status = object.getString("status");
+                String shop_id = object.getString("id");
+                String type = object.getString("type");
+                ls_Order.add(new Order(name,url,num,type,shop_id,status));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return ls_Order;
+    }
 
     /**
      * 将字符串解析成评论串
@@ -167,12 +171,16 @@ public class Httpss {
      */
     public List<Scene> parserScene(String s){
         try {
+            Log.e("Scene",s);
             JSONArray array1 = new JSONArray(s);
+            Log.e("Scene",array1.length()+"");
             for(int i = 0;i < array1.length(); i++) {
                 JSONObject object = array1.getJSONObject(i);
                 String url = object.getString("img");
                 String content = object.getString("content");
+                Log.e("Scene",url+content);
                 ls_Scene.add(new Scene(url,content));
+                Log.e("ls_Scene",ls_Scene.size()+"");
             }
         } catch (JSONException e) {
             e.printStackTrace();

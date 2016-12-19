@@ -2,6 +2,8 @@ package com.example.lenovo.inequalitysign.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,7 @@ public class MasonryAdapter   extends RecyclerView.Adapter<MasonryAdapter.Masonr
     @Override
     public void onBindViewHolder(MasonryAdapter.MasonryView holder, int position) {
         ImageLoader.getInstance().displayImage(ls.get(position).getImg(),holder.imageView);
+
         holder.textView.setText(ls.get(position).getTitle());
 
     }
