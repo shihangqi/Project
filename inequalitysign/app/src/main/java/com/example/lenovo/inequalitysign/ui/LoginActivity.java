@@ -71,8 +71,9 @@ public class LoginActivity extends AppCompatActivity {
             }else{
                 Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                 Utils.id = response_server;
-                Intent i = new Intent(LoginActivity.this,AlreadyLogin.class);
-                Log.e("QQ登陆",Utils.id);
+                Log.e("Utils.id",Utils.id);
+                Utils.flag =4;
+                Intent i = new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(i);
             }
         }
@@ -324,6 +325,7 @@ public class LoginActivity extends AppCompatActivity {
                         NameValuePair pair1 = new BasicNameValuePair("push_id",Utils.push_id);
                         Httpss h = new Httpss();
                         response_server = h.setAndGet(Utils.USER_URL+"login",pair,pair1);
+                        Log.e("QQ",response_server);
                         Message msg = new Message();
                         handler1.sendMessage(msg);
 
@@ -413,7 +415,8 @@ public class LoginActivity extends AppCompatActivity {
                             Httpss h = new Httpss();
                             NameValuePair pair = new BasicNameValuePair("user_tel",et_te1.getText().toString());
                             NameValuePair pair1 = new BasicNameValuePair("user_tel",Utils.push_id);
-                            response_server = h.setAndGet(Utils.USER_URL+"login",pair);
+                            response_server = h.setAndGet(Utils.USER_URL+"login",pair,pair1);
+                            Log.e("Message",response_server);
                         }
                     }).start();
                     Message msg1 =new Message();

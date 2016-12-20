@@ -34,18 +34,33 @@
             android:id="@+id/imageButton"
             android:src="@drawable/circle"
             android:layout_marginTop="20dp"/>
+       <RelativeLayout
+           android:layout_width="150dp"
+           android:layout_height="45dp"
+           android:layout_marginBottom="50dp"
+           android:layout_marginTop="20dp"
+           android:layout_gravity="center">
+           <Button
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:text="登    录"
+               android:gravity="center"
+               android:id="@+id/mypageB1"
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="45dp"
-            android:text="登    录"
-            android:gravity="center"
-            android:id="@+id/mypageB1"
-            android:background="@drawable/shape"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:textSize="20dp"/>
+               android:background="@drawable/shape"
+               android:visibility="visible"
+               android:textSize="20dp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:textSize="20dp"
+               android:id="@+id/name"
+               android:textColor="@color/red"
+               android:text=""
+               android:visibility="gone"
+               android:gravity="center"/>
+       </RelativeLayout>
+
 
         <View
             android:layout_width="match_parent"
@@ -110,6 +125,19 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/lightgray" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="退 出 登 录"
+                android:id="@+id/btn_back"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
 
     </LinearLayout>
