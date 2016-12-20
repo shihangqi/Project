@@ -29,6 +29,7 @@
             <RatingBar
                 android:progressTint="#fd0"
                 android:rating="0"
+                android:id="@+id/ratingbar"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content" />
             <TextView

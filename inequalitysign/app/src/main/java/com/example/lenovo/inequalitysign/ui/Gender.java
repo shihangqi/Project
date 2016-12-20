@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -55,6 +56,7 @@ public class Gender extends AppCompatActivity {
                             Httpss http = new Httpss();
                             NameValuePair pair1 = new BasicNameValuePair("user_sex","男");
                             NameValuePair pair11 = new BasicNameValuePair("id", Utils.id);
+                            Log.e("sex",Utils.id);
                             result = http.setAndGet(u,pair1,pair11);
                             Message msg = new Message();
                             mHandler.sendMessage(msg);

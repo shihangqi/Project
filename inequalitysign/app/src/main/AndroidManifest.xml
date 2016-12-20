@@ -43,8 +43,6 @@
         </activity>
         <activity android:name=".ui.DiningInformationActivity">
         </activity>
-        <activity android:name=".ui.DiningRankActivity">
-        </activity>
         <activity android:name=".ui.EditnameActivity">
         </activity>
         <activity android:name=".ui.LoginActivity">
