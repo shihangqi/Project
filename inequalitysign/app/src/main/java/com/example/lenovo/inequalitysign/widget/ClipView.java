@@ -1,4 +1,4 @@
-package com.example.lenovo.inequalitysign.view;
+package com.example.lenovo.inequalitysign.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

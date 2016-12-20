@@ -191,6 +191,10 @@ public class MineProfileActivity extends AppCompatActivity {
                     //此处后面可以将bitMap转为二进制上传后台网络
                     //......
 
+                    //请求并修改用户头像
+                    Httpss httpss = new Httpss();
+                    httpss.postFile(MineProfileActivity.this, cropImagePath);
+
                 }
                 break;
         }

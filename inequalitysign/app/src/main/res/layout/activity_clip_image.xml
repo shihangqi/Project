@@ -35,13 +35,13 @@
         app:clipType="circle"         ： 裁剪框类型为圆形
         app:mHorizontalPadding="30dp" ：裁剪框距离左右边距为30dp
      -->
-    <com.example.lenovo.inequalitysign.view.ClipViewLayout
+    <com.example.lenovo.inequalitysign.widget.ClipViewLayout
         android:id="@+id/CvlayClipBorder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         app:clipBorderWidth="2dp"
-        app:clipType="rectangle"
+        app:clipType="circle"
         app:mHorizontalPadding="30dp" />
     <RelativeLayout
         android:padding="10dp"

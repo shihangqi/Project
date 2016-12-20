@@ -1,11 +1,20 @@
 package com.example.lenovo.inequalitysign.http;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.lenovo.inequalitysign.Utils.Utils;
 import com.example.lenovo.inequalitysign.entity.Comment;
 import com.example.lenovo.inequalitysign.entity.Dining;
 import com.example.lenovo.inequalitysign.entity.Order;
 import com.example.lenovo.inequalitysign.entity.Rank;
 import com.example.lenovo.inequalitysign.entity.Scene;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -20,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -180,4 +191,42 @@ public class Httpss {
         return ls_Scene;
     }
 
+    /**
+     * 文件上传
+     * @param context
+     * @param localFile
+     */
+    public void postFile(final Context context, String localFile) {
+        File file = new File(localFile);
+        if (file.exists() && file.length() > 0) {
+            AsyncHttpClient client = new AsyncHttpClient();
+            RequestParams params = new RequestParams();
+            try {
+                params.put("id", Utils.id);
+                params.put("smallimg_url", file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            client.post(Utils.urlImg, params, new AsyncHttpResponseHandler() {
+                @Override
+                public void onSuccess(int i, Header[] headers, byte[] bytes) {
+                    String result = new String(bytes);
+                    Log.e("bytes", result);
+                    if (result.contains("http://")) {
+                        Toast.makeText(context, "更新成功", Toast.LENGTH_LONG).show();
+                    } else if (result.equals("changeimgfail")) {
+                        Toast.makeText(context, "更新失败", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+                    Toast.makeText(context, "更新失败", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+            Toast.makeText(context, "图片不支持", Toast.LENGTH_LONG).show();
+        }
+    }
 }

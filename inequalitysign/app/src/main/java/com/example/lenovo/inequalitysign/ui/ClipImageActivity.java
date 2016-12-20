@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.lenovo.inequalitysign.R;
-import com.example.lenovo.inequalitysign.view.ClipViewLayout;
+import com.example.lenovo.inequalitysign.widget.ClipViewLayout;
 
 import java.io.File;
 import java.io.IOException;

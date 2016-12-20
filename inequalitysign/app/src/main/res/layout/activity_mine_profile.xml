@@ -5,156 +5,148 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f0f0f0"
     tools:context="com.example.lenovo.inequalitysign.ui.MineProfileActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <LinearLayout
+
+        <RelativeLayout
+            android:background="#7cba84"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#7cba84">
+            android:layout_height="?attr/actionBarSize">
             <ImageButton
+                android:id="@+id/mine_profileB1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/fanhui2" />
+            <TextView
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/fanhui2"
-                android:background="#7cba84"
-                android:id="@+id/mine_profileB1"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:background="#7cba84"
-                android:text="个人资料"
+                android:text="编辑资料"
                 android:gravity="center"
-                android:textSize="30dp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/RlayProfileHead"
+            android:background="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/white"
-
-            >
+            android:layout_height="85dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:text="头像"
-
-                android:paddingTop="45dp"
                 android:paddingLeft="20dp"
-                android:textSize="15dp"/>
-
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/touxiang"
-                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="头像"/>
+            <com.example.lenovo.inequalitysign.widget.CircleImageView
                 android:id="@+id/iv"
-                android:background="@drawable/circle"
-                android:layout_alignParentStart="true"
-                />
+                android:layout_toLeftOf="@+id/mine_profileB2"
+                android:layout_gravity="center"
+                android:src="@drawable/touxiang"
+                android:layout_width="70dp"
+                android:layout_height="70dp" />
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/youjiantou"
-                android:background="@color/white"
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_centerVertical="true"
                 android:id="@+id/mine_profileB2"
-                android:layout_marginRight="2dp"
-                />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/gray" />
-
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/youjiantou"/>
+        </RelativeLayout>
         <LinearLayout
+            android:id="@+id/LlayManagerName"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingTop="5dp"
-            android:background="@color/white"
-            android:paddingBottom="5dp"
-            >
+            android:layout_margin="0dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="match_parent"
-                android:text="昵称"
-                android:paddingTop="8dp"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:textSize="15dp"/>
+                android:paddingRight="20dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="昵称"/>
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:gravity="end"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/tv_name"
-                android:gravity="center"
-                android:textSize="20dp"
-                android:layout_weight="1"/>
-
+                android:textColor="#888888"
+                android:background="@null"
+                android:layout_weight="3"
+                android:padding="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
             <ImageButton
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_centerVertical="true"
                 android:id="@+id/mine_profileB3"
+                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/youjiantou"
-                android:background="@color/white"
-                android:layout_marginRight="2dp"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/youjiantou"/>
         </LinearLayout>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
-
         <LinearLayout
+            android:id="@+id/LlayManagerType"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:background="@color/white"
-            >
+            android:layout_margin="0dp">
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="match_parent"
-                android:text="性别"
-                android:paddingTop="8dp"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:textSize="15dp"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="20dp"
-
-                android:id="@+id/tv_sex"
-                android:layout_weight="1"/>
-            <ImageButton
+                android:paddingRight="20dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/youjiantou"
-                android:layout_marginRight="2dp"
-                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:text="性别"/>
+            <TextView
+                android:textSize="18sp"
+                android:gravity="end"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/tv_sex"
+                android:textColor="#888888"
+                android:background="@null"
+                android:layout_weight="3"
+                android:padding="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <ImageButton
+                android:focusable="false"
+                android:clickable="false"
+                android:layout_centerVertical="true"
                 android:id="@+id/mine_profileB4"
-                />
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/youjiantou"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/gray" />
-
-    </LinearLayout>
-
 
 
 </LinearLayout>
